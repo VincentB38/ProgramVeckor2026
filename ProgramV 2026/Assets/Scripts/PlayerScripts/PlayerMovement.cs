@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) // För att se om man är på marken eller inte
     {
-        if (collision.gameObject.CompareTag("OnGround"))
+        if (collision.gameObject.CompareTag("OnGround") && (collision.gameObject.transform.position.y < Player.transform.position.y))
         {
             isGrounded = true;
         }
