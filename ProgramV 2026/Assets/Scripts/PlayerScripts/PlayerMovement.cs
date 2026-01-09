@@ -9,17 +9,20 @@ public class PlayerMovement : MonoBehaviour
 
     public int Speed;
     public int JumpPower;
+    public int PlayerHealth;
+
+    public RectTransform healthBar;
 
     Rigidbody2D Player;
 
     private bool isGrounded;
 
-    public float DashSpeed = 15f;      // Hur snabb dashen är
-    public float DashDuration = 0.2f;  // Under hur lång tid
+    public float DashSpeed;      // Hur snabb dashen är
+    public float DashDuration;  // Under hur lång tid
+    public float DashCooldownTime;
     private bool isDashing = false;
     private float dashTimeLeft = 0f;
     private bool DashCooldown = false;
-    public float DashCooldownTime = 1f;
     void Start()
     {
         Player = GetComponent<Rigidbody2D>();
@@ -29,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float direction = 0f;
+
 
         if (Keyboard.current.dKey.isPressed) direction = 1f;
         else if (Keyboard.current.aKey.isPressed) direction = -1f;
