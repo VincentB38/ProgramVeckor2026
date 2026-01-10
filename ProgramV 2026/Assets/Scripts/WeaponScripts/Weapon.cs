@@ -1,20 +1,65 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
-    string name;
+    // Variables for Weapon Description
+    [SerializeField] private string name;
+    [SerializeField] private Image icon;
 
-    int damage;
-    int ammoMagazine;
+    // Variables for Weapon Stats
+    [SerializeField] private int damage;
+    [SerializeField] private int ammoMagazine;
+    [SerializeField] private int currentAmmo;
 
-    public Weapon(string name, int damage, int ammoMagazine)
+    [SerializeField] private float fireRate;
+    [SerializeField] private float reloadRate;
+    [SerializeField] private float bulletSpeed;
+
+    [SerializeField] private float range;
+
+    // Variables for Weapon Components
+    public Transform MuzzlePos;
+    public Transform BulletParent;
+
+    public void Fire(GameObject bullet)
     {
-        this.name = name;
-        this.damage = damage;
-        this.ammoMagazine = ammoMagazine;
+        Vector2 targetDirection = GetMousePosition();
+
+        GameObject newBullet = Instantiate(bullet, MuzzlePos);
+        newBullet.transform.parent = BulletParent;
+        newBullet.GetComponent<Rigidbody2D>().linearVelocity = targetDirection.normalized * bulletSpeed;
+
+        currentAmmo--; // Reload type, Press to reload, or auto reload?
+
+        Debug.Log("Fired");
     }
 
+    // Gets mouse position and converts to world. Slightly inaccurate (Will try to fix)
+    private Vector2 GetMousePosition()
+    {
+        Vector2 mouseScreen = Mouse.current.position.ReadValue();
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(mouseScreen);
+        return mousePos;
+    }
+
+    protected virtual void Reload()
+    {
+        // Virtual to make it possible to change animation or any other variables in subclasses
+
+        WaitForSeconds(reloadRate);
+        currentAmmo = ammoMagazine;
+    }
+
+    IEnumerator WaitForSeconds(float time)
+    {
+        yield return WaitForSeconds(time);
+    }
+
+    #region GetVariables
     public string GetName()
     {
         return name;
@@ -25,8 +70,29 @@ public class Weapon : MonoBehaviour
         return damage;
     }
 
-    public int GetAmmo()
+    public int GetAmmoMagazine()
     {
         return ammoMagazine;
     }
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public float GetFireRate()
+    {
+        return fireRate;
+    }
+
+    public float GetReloadRate()
+    {
+        return reloadRate;
+    }
+
+    public float GetRange()
+    {
+        return range;
+    }
+    #endregion
 }
