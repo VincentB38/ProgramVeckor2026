@@ -243,8 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f761022951f6214183988fcebcc333c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponController
-  currentWeapon: {fileID: 1187924623}
-  bullet: {fileID: 878475743}
+  weaponRoot: {fileID: 0}
+  weaponPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!4 &228841572
 Transform:
   m_ObjectHideFlags: 0
@@ -275,8 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Speed: 2
   JumpPower: 5
-  PlayerHealth: 3
-  healthBar: {fileID: 0}
+  GunPart: {fileID: 1187924623}
   DashSpeed: 4
   DashDuration: 6
   DashCooldownTime: 3
@@ -706,17 +706,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16eaf2a02343a749bac1550402216c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  name: 
-  icon: {fileID: 0}
-  damage: 0
   ammoMagazine: 0
-  currentAmmo: 0
   fireRate: 0
   reloadRate: 0
   bulletSpeed: 1
-  range: 0
   MuzzlePos: {fileID: 849617787}
-  BulletParent: {fileID: 1856946686}
+  bulletsParent: {fileID: 0}
 --- !u!1 &1218424065
 GameObject:
   m_ObjectHideFlags: 0

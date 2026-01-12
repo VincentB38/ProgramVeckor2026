@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public int Speed;
     public int JumpPower;
 
+    public GameObject GunPart;
+
     Rigidbody2D Player;
 
     private bool isGrounded;
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float dashTimeLeft = 0f;
     private bool DashCooldown = false;
+
+
     void Start()
     {
         Player = GetComponent<Rigidbody2D>();
