@@ -1,33 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    // Variables for Weapons
+    [SerializeField] private Transform weaponRoot;     // Body/WeaponRoot
+    [SerializeField] private GameObject weaponPrefab;  // AssaultRifle
+    [SerializeField] private GameObject bulletPrefab;
 
-    // Access to two weapons at a time
-    List<GameObject> equippedWeapons = new List<GameObject>();
-    public GameObject currentWeapon;
-    public GameObject bullet;
+    private Weapon currentWeapon;
 
-    // Variables for UI
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        EquipWeapon();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (currentWeapon == null) return;
+
+        if (Keyboard.current.spaceKey.isPressed)
         {
-            currentWeapon.GetComponent<Weapon>().Fire(bullet);
+            currentWeapon.TryFire(bulletPrefab);
         }
     }
 
-    
+    private void EquipWeapon()
+    {
+        GameObject weapon = Instantiate(weaponPrefab, weaponRoot);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
+        weapon.transform.localScale = Vector3.one;
+
+        currentWeapon = weapon.GetComponent<Weapon>();
+    }
 }
