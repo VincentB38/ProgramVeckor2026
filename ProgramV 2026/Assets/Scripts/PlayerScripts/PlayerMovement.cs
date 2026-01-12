@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator DashCooldownTimer() // Väntetid
+    private IEnumerator DashCooldownTimer() // Väntetid för dash
     {
         yield return new WaitForSeconds(DashCooldownTime);
         DashCooldown = false;
