@@ -41,8 +41,12 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack()
     {
-
+        
     }
 
-
+    // Get Functions
+    public Rigidbody2D GetRigidBody2D()
+    {
+        return rb;
+    }
 }
