@@ -38,28 +38,28 @@ public class Enemy : MonoBehaviour
     }
 
     // Virtual function to make changes in each subclass
-    public virtual void Move(int direction, Transform playerTransform) // 1 is right, -1 is left
+    public virtual void Move(int direction, Transform playerTransform, Transform enemyTransform) // 1 is right, -1 is left
     {
-        float x = gameObject.transform.position.x - playerTransform.position.x;
+        float x = Mathf.Abs(enemyTransform.position.x - playerTransform.position.x);
 
         float distance = Vector2.Distance(gameObject.transform.position, playerTransform.position);
 
-        if (Mathf.Abs(distance) > distanceToPlayer) // If enemy is not close to Player, it will move forward
+        if (x > distanceToPlayer) // If enemy is not close to Player, it will move forward
         {
             rb.linearVelocity = new Vector2(direction, 0) * speed;
-            Debug.Log("Moving to Player" + distance);
+            Debug.Log("Moving to Player" + x);
         }
         else // If enemy is close to player, it will stop
         {
             rb.linearVelocity = new Vector2(0, 0);
-            Debug.Log("Stopping near Player" + distance);
+            Debug.Log("Stopping near Player" + x);
         }
     }
 
     // In Subclass, uses a ontrigger fn to decide layer by adding an index to each trigger
-    public void LayerMove(int layerIndex)
+    public void LayerMove(GameObject layerObject, GameObject enemy)
     {
-        gameObject.layer = layerIndex;
+        enemy.transform.position = layerObject.transform.position;
 
         // Run function to change collision layer
     }
