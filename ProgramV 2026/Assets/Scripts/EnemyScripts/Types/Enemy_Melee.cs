@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy_Melee : Enemy
 {
-    public Enemy_Melee(float speed, Rigidbody2D rb) : base (speed, rb)
+    public Enemy_Melee(float speed, float distanceToPlayer) : base (speed, distanceToPlayer)
     {
 
     }
