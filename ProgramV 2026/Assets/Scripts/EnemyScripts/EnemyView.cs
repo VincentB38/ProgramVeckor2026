@@ -10,6 +10,11 @@ public class EnemyView : MonoBehaviour
     {
         this.enemy = enemy;
 
-        rb = enemy.GetRigidBody2D();
+        enemy.SetRigidBody2D(rb);
+    }
+
+    public Enemy GetEnemy()
+    {
+        return enemy;
     }
 }
