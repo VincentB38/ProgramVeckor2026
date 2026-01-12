@@ -1,99 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
-    // Variables for Weapon Description
-    [SerializeField] private string name;
-    [SerializeField] private Image icon;
+    [Header("Stats")]
+    [SerializeField] private int ammoMagazine = 30;
+    [SerializeField] private float fireRate = 0.12f;
+    [SerializeField] private float reloadRate = 1.2f;
+    [SerializeField] private float bulletSpeed = 15f;
 
-    // Variables for Weapon Stats
-    [SerializeField] private int damage;
-    [SerializeField] private int ammoMagazine;
-    [SerializeField] private int currentAmmo;
-
-    [SerializeField] private float fireRate;
-    [SerializeField] private float reloadRate;
-    [SerializeField] private float bulletSpeed;
-
-    [SerializeField] private float range;
-
-    // Variables for Weapon Components
+    [Header("References")]
     public Transform MuzzlePos;
-    public Transform BulletParent;
+    [SerializeField] private Transform bulletsParent; // ← Bullets object
 
-    public void Fire(GameObject bullet)
+    private int currentAmmo;
+    private float nextFireTime;
+    private bool isReloading;
+
+    private void Awake()
     {
-        Vector3 targetDirection = GetMousePosition();
-
-        GameObject newBullet = Instantiate(bullet, MuzzlePos);
-        newBullet.transform.parent = BulletParent;
-        newBullet.GetComponent<Rigidbody2D>().linearVelocity = targetDirection * bulletSpeed;
-
-        currentAmmo--; // Reload type, Press to reload, or auto reload?
-
-        Debug.Log("Fired");
-    }
-
-    // Gets mouse position and converts to world. Slightly inaccurate (Will try to fix)
-    private Vector3 GetMousePosition()
-    {
-        Vector3 mouseScreen = Mouse.current.position.ReadValue();
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreen);
-        mousePos.z = 0;
-        return mousePos;
-    }
-
-    protected virtual void Reload()
-    {
-        // Virtual to make it possible to change animation or any other variables in subclasses
-
-        WaitForSeconds(reloadRate);
         currentAmmo = ammoMagazine;
+
+        // Auto-find Bullets object if not set
+        if (bulletsParent == null)
+        {
+            GameObject bullets = GameObject.Find("Bullets");
+            if (bullets != null)
+                bulletsParent = bullets.transform;
+        }
     }
 
-    IEnumerator WaitForSeconds(float time)
+    public void TryFire(GameObject bulletPrefab)
     {
-        yield return WaitForSeconds(time);
+        if (Time.time < nextFireTime || isReloading) return;
+
+        if (currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
+        Fire(bulletPrefab);
+        nextFireTime = Time.time + fireRate;
     }
 
-    #region GetVariables
-    public string GetName()
+    private void Fire(GameObject bulletPrefab)
     {
-        return name;
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(
+            Mouse.current.position.ReadValue()
+        );
+
+        Vector2 direction =
+            (mouseWorld - (Vector2)MuzzlePos.position).normalized;
+
+        GameObject bullet = Instantiate(
+            bulletPrefab,
+            MuzzlePos.position,
+            Quaternion.identity,
+            bulletsParent        // ✅ PARENTED HERE
+        );
+
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.linearVelocity = direction * bulletSpeed;
+
+        currentAmmo--;
     }
 
-    public int GetDamage()
+    private IEnumerator Reload()
     {
-        return damage;
+        isReloading = true;
+        yield return new WaitForSeconds(reloadRate);
+        currentAmmo = ammoMagazine;
+        isReloading = false;
     }
-
-    public int GetAmmoMagazine()
-    {
-        return ammoMagazine;
-    }
-
-    public int GetCurrentAmmo()
-    {
-        return currentAmmo;
-    }
-
-    public float GetFireRate()
-    {
-        return fireRate;
-    }
-
-    public float GetReloadRate()
-    {
-        return reloadRate;
-    }
-
-    public float GetRange()
-    {
-        return range;
-    }
-    #endregion
 }
