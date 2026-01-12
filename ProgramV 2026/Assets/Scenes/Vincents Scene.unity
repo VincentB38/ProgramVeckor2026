@@ -1318,11 +1318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
   Health: 3
-  Hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  HeartPreFab: {fileID: 0}
+  HeartContainer: {fileID: 1315298455}
+  HeartPreFab: {fileID: 3196466387327115833, guid: e4f382e0b20b77945a36e04f9beeacde, type: 3}
 --- !u!1 &1994267667
 GameObject:
   m_ObjectHideFlags: 0
