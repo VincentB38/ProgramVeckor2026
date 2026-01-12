@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 270398089}
   - component: {fileID: 270398090}
-  - component: {fileID: 270398091}
   m_Layer: 6
   m_Name: LayerTrig
   m_TagString: Untagged
@@ -198,20 +197,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &270398091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270398088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4167eaae77606414bb1e1ac1e0a902b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LayerTriggerScript
-  layerIndex: 0
-  nextlayerObject: {fileID: 0}
 --- !u!1 &404651289
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemyPrefab: {fileID: 2145778253}
   playerTransform: {fileID: 2034527943}
-  tempSpeed: 2
+  tempSpeed: 5
 --- !u!4 &1158743764
 Transform:
   m_ObjectHideFlags: 0
@@ -549,6 +534,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1461583962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1461583963}
+  m_Layer: 0
+  m_Name: Gunpart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1461583963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461583962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2034527943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592834823
 GameObject:
@@ -974,6 +990,7 @@ GameObject:
   - component: {fileID: 2034527941}
   - component: {fileID: 2034527940}
   - component: {fileID: 2034527939}
+  - component: {fileID: 2034527944}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1041,6 +1058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Speed: 5
   JumpPower: 7
+  GunPart: {fileID: 1461583962}
   DashSpeed: 0
   DashDuration: 0
   DashCooldownTime: 0
@@ -1141,9 +1159,26 @@ Transform:
   m_LocalPosition: {x: 7.09, y: 2.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1461583963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034527944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034527938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c39939891b09b4ba1a30583c089f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
+  Health: 3
+  HeartContainer: {fileID: 0}
+  HeartPreFab: {fileID: 0}
+  PlayerScore: {fileID: 0}
 --- !u!1 &2071323684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2071323685}
   - component: {fileID: 2071323687}
-  - component: {fileID: 2071323686}
   m_Layer: 6
   m_Name: LayerTrig (1)
   m_TagString: Untagged
@@ -1171,26 +1205,12 @@ Transform:
   m_GameObject: {fileID: 2071323684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.32, y: 0, z: 0}
+  m_LocalPosition: {x: 0.32, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 669091511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2071323686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071323684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4167eaae77606414bb1e1ac1e0a902b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LayerTriggerScript
-  layerIndex: 1
-  nextlayerObject: {fileID: 270398088}
 --- !u!61 &2071323687
 BoxCollider2D:
   m_ObjectHideFlags: 0

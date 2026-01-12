@@ -1,13 +1,15 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
-    string name;
+    // Sprite and animator variables to allow EnemyView to assign var.
 
     float speed;
     int damage;
+    float damageRate;
     float distanceToPlayer;
     Rigidbody2D rb;
 
@@ -18,11 +20,12 @@ public class Enemy : MonoBehaviour
         this.distanceToPlayer = distanceToPlayer;
     }
 
-    // Temporary manual constructor
-    public void SetValues(float speed, float distanceToPlayer)
+    // Temporary manual "constructor"
+    public void SetValues(float speed, float distanceToPlayer, float damageRate)
     {
         this.speed = speed;
         this.distanceToPlayer = distanceToPlayer;
+        this.damageRate = damageRate;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,7 +41,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Virtual function to make changes in each subclass
-    public virtual void Move(int direction, Transform playerTransform, Transform enemyTransform) // 1 is right, -1 is left
+    public virtual void Move(int direction, Transform playerTransform, Transform enemyTransform, PlayerHandler playerHandler) // 1 is right, -1 is left
     {
         float x = Mathf.Abs(enemyTransform.position.x - playerTransform.position.x);
 
@@ -47,12 +50,13 @@ public class Enemy : MonoBehaviour
         if (x > distanceToPlayer) // If enemy is not close to Player, it will move forward
         {
             rb.linearVelocity = new Vector2(direction, 0) * speed;
-            Debug.Log("Moving to Player" + x);
         }
         else // If enemy is close to player, it will stop
         {
             rb.linearVelocity = new Vector2(0, 0);
-            Debug.Log("Stopping near Player" + x);
+
+            // When the distance is enough, attack function will run
+            Attack(playerHandler);
         }
     }
 
@@ -66,7 +70,23 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack(PlayerHandler player)
     {
-        player.ChangeHealth(-damage);
+        Debug.Log("Attacked player");
+
+        if (player == null)
+        {
+            player.ChangeHealth(-damage);
+        }
+        else
+        {
+            Debug.LogError("PlayerHandler in Attack Function is missing"); // Have to add player functions to the actual player
+        }
+        
+        StartCoroutine(WaitToAttack());
+    }
+
+    IEnumerator WaitToAttack()
+    {
+        yield return new WaitForSeconds(damageRate);
     }
 
     // Get Functions

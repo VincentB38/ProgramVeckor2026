@@ -4,6 +4,8 @@ public class EnemyView : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
 
+    // Adding variables to sprite and animator
+
     Enemy enemy;
 
     // Variables for layer movement

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class EnemyManager : MonoBehaviour
     {
         // Unity decided to be annoying - Has to add, removes the point of constructor
         Enemy tempEnemy = gameObject.AddComponent<Enemy_Melee>();
-        tempEnemy.SetValues(2f, 1.5f);
+        tempEnemy.SetValues(tempSpeed, 1.5f, 5f);
 
         et = Instantiate(enemyPrefab, new Vector3(), Quaternion.identity);
         et.InIt(tempEnemy);
@@ -22,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        et.GetEnemy().Move(CheckPlayerPosition(et), playerTransform, et.transform);
+        et.GetEnemy().Move(CheckPlayerPosition(et), playerTransform, et.transform, playerTransform.GetComponent<PlayerHandler>());
     }
 
     // True if the player is to the right and false if left
@@ -36,5 +37,24 @@ public class EnemyManager : MonoBehaviour
         {
             return 1; // Player is to the right
         }
+    }
+}
+
+public class EnemyList
+{
+    public List<Enemy> enemies;
+    #region Enemies
+    
+
+    #endregion
+
+    // Adds all types of cards that are needed
+    public EnemyList()
+    {
+        enemies = new List<Enemy>
+        {
+            
+        };
+
     }
 }
