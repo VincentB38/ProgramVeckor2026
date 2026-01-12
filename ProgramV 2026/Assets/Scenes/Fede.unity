@@ -276,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Speed: 2
   JumpPower: 5
-  GunPart: {fileID: 1187924623}
+  GunPart: {fileID: 0}
   DashSpeed: 4
   DashDuration: 6
   DashCooldownTime: 3
