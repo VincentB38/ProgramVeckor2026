@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 404651290}
   m_Layer: 0
   m_Name: Floor (1)
-  m_TagString: Ground
+  m_TagString: OnGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 1592834824}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Ground
+  m_TagString: OnGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 1841453411}
   m_Layer: 0
   m_Name: Floor (2)
-  m_TagString: Ground
+  m_TagString: OnGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,6 +861,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Speed: 5
   JumpPower: 7
+  DashSpeed: 0
+  DashDuration: 0
+  DashCooldownTime: 0
 --- !u!50 &2034527941
 Rigidbody2D:
   serializedVersion: 5
