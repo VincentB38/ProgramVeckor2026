@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public int Speed;
     public int JumpPower;
 
+    public GameObject GunPart;
+
     Rigidbody2D Player;
 
     private bool isGrounded;
@@ -20,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float dashTimeLeft = 0f;
     private bool DashCooldown = false;
+
+
     void Start()
     {
         Player = GetComponent<Rigidbody2D>();
@@ -31,8 +35,16 @@ public class PlayerMovement : MonoBehaviour
         float direction = 0f;
 
 
-        if (Keyboard.current.dKey.isPressed) direction = 1f; // höger
-        else if (Keyboard.current.aKey.isPressed) direction = -1f; // vänster
+        if (Keyboard.current.dKey.isPressed)
+        {
+            direction = 1f; // höger
+            GunPart.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else if (Keyboard.current.aKey.isPressed)
+        {
+            direction = -1f; // vänster
+            GunPart.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        }
 
 
         if (Keyboard.current.qKey.wasPressedThisFrame && !DashCooldown)
@@ -84,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator DashCooldownTimer() // Väntetid
+    private IEnumerator DashCooldownTimer() // Väntetid för dash
     {
         yield return new WaitForSeconds(DashCooldownTime);
         DashCooldown = false;
