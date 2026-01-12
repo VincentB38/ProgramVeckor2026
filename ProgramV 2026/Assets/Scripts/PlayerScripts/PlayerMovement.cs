@@ -35,8 +35,16 @@ public class PlayerMovement : MonoBehaviour
         float direction = 0f;
 
 
-        if (Keyboard.current.dKey.isPressed) direction = 1f; // höger
-        else if (Keyboard.current.aKey.isPressed) direction = -1f; // vänster
+        if (Keyboard.current.dKey.isPressed)
+        {
+            direction = 1f; // höger
+            GunPart.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else if (Keyboard.current.aKey.isPressed)
+        {
+            direction = -1f; // vänster
+            GunPart.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        }
 
 
         if (Keyboard.current.qKey.wasPressedThisFrame && !DashCooldown)
