@@ -9,9 +9,6 @@ public class PlayerMovement : MonoBehaviour
 
     public int Speed;
     public int JumpPower;
-    public int PlayerHealth;
-
-    public RectTransform healthBar;
 
     Rigidbody2D Player;
 
@@ -34,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
         float direction = 0f;
 
 
-        if (Keyboard.current.dKey.isPressed) direction = 1f;
-        else if (Keyboard.current.aKey.isPressed) direction = -1f;
+        if (Keyboard.current.dKey.isPressed) direction = 1f; // höger
+        else if (Keyboard.current.aKey.isPressed) direction = -1f; // vänster
 
 
         if (Keyboard.current.qKey.wasPressedThisFrame && !DashCooldown)
