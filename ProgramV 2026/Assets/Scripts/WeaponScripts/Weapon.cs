@@ -27,11 +27,11 @@ public class Weapon : MonoBehaviour
 
     public void Fire(GameObject bullet)
     {
-        Vector2 targetDirection = GetMousePosition();
+        Vector3 targetDirection = GetMousePosition();
 
         GameObject newBullet = Instantiate(bullet, MuzzlePos);
         newBullet.transform.parent = BulletParent;
-        newBullet.GetComponent<Rigidbody2D>().linearVelocity = targetDirection.normalized * bulletSpeed;
+        newBullet.GetComponent<Rigidbody2D>().linearVelocity = targetDirection * bulletSpeed;
 
         currentAmmo--; // Reload type, Press to reload, or auto reload?
 
@@ -39,10 +39,11 @@ public class Weapon : MonoBehaviour
     }
 
     // Gets mouse position and converts to world. Slightly inaccurate (Will try to fix)
-    private Vector2 GetMousePosition()
+    private Vector3 GetMousePosition()
     {
-        Vector2 mouseScreen = Mouse.current.position.ReadValue();
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(mouseScreen);
+        Vector3 mouseScreen = Mouse.current.position.ReadValue();
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreen);
+        mousePos.z = 0;
         return mousePos;
     }
 
