@@ -18,10 +18,7 @@ public class PlayerHandler : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.hKey.wasPressedThisFrame)
-        {
-            ChangeHealth(-1);
-        }
+
     }
 
     public void ChangeHealth(int amount)
