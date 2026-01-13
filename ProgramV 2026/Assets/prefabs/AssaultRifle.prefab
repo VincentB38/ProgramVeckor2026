@@ -76,9 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16eaf2a02343a749bac1550402216c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  ammoMagazine: 3
-  fireRate: 10
-  reloadRate: 1
-  bulletSpeed: 10
+  ammoMagazine: 30
+  fireRate: 0.12
+  reloadRate: 1.2
+  bulletSpeed: 15
   MuzzlePos: {fileID: 6268864709236208091}
   bulletsParent: {fileID: 0}
