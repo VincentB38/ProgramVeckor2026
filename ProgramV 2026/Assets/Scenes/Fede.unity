@@ -262,15 +262,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1233558370}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8081527
+      value: 2.9881525
       objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.022022486
+      value: -3.1079776
       objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -309,6 +309,10 @@ PrefabInstance:
       value: enemy 1
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -324,11 +328,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 962486604}
   m_SourcePrefab: {fileID: 100100000, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
---- !u!4 &962486602 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-  m_PrefabInstance: {fileID: 962486601}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &962486603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
@@ -346,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae5ed2c74d09af49b59f41e2d32cbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxHealth: 30
 --- !u!1 &1004689111
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +639,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1004689112}
-  - {fileID: 962486602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1233558371
@@ -805,7 +804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponController
   weaponRoot: {fileID: 1004689112}
-  bulletPrefab: {fileID: 8321501342719085292, guid: 921db53cd7ee99643a9a5172613ccd02, type: 3}
   weaponSlot1Prefab: {fileID: 7135761585660305779, guid: 619ab8d88cd3fc54a9022831b6bd46e2, type: 3}
   weaponSlot2Prefab: {fileID: 7135761585660305779, guid: 020d3ba8d02e77f4193e1cacdcc94960, type: 3}
 --- !u!1 &1856946685
@@ -848,3 +846,4 @@ SceneRoots:
   - {fileID: 1218424068}
   - {fileID: 1856946686}
   - {fileID: 1233558370}
+  - {fileID: 962486601}
