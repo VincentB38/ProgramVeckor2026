@@ -79,7 +79,7 @@ public class PlayerWeaponController : MonoBehaviour
         Weapon weapon = weapons[activeWeaponIndex];
         if (weapon == null) return;
 
-        if (Keyboard.current.spaceKey.isPressed)
+        if (Mouse.current.leftButton.isPressed)
         {
             weapon.TryFire(); // ✅ CORRECT
         }

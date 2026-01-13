@@ -257,37 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26773256}
   m_CullTransparentMesh: 1
---- !u!1 &193759384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 193759385}
-  m_Layer: 0
-  m_Name: Gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &193759385
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193759384}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.93082, y: -0.27611, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301963811
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Speed: 5
   JumpPower: 10
-  GunPart: {fileID: 193759384}
+  GunPart: {fileID: 316330559}
   FlooringHolder: {fileID: 610596402}
   DashSpeed: 15
   DashDuration: 0.2
@@ -3066,7 +3035,6 @@ SceneRoots:
   - {fileID: 854765533}
   - {fileID: 2006439656}
   - {fileID: 477957205}
-  - {fileID: 193759385}
   - {fileID: 338729199}
   - {fileID: 1876712059}
   - {fileID: 7457150952228767580}

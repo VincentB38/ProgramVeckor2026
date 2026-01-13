@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Player = GetComponent<Rigidbody2D>();
+
+        
     }
 
     // Update is called once per frame
@@ -39,16 +41,16 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
         {
             direction = 1f; // höger
-            GunPart.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+           //GunPart.transform.position = new Vector2(1.4f, 0.14f);
         }
         else if (Keyboard.current.aKey.isPressed)
         {
             direction = -1f; // vänster
-            GunPart.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+          //  GunPart.transform.position = new Vector2(-1.4f, 0.14f);
         }
 
 
-        if (Keyboard.current.qKey.wasPressedThisFrame && !DashCooldown)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && !DashCooldown)
         {
             if (direction != 0) // Bara dasha om man rör sig vänster eller höger
             {
