@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6638267863616491473}
   - component: {fileID: 3968954206589293562}
   m_Layer: 0
-  m_Name: AssaultRifle
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,9 +76,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16eaf2a02343a749bac1550402216c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 10
-  ammoMagazine: 30
-  fireRate: 0.12
+  damage: 50
+  ammoMagazine: 2
+  fireRate: 1
   reloadRate: 1.2
   bulletSpeed: 15
   bulletPrefab: {fileID: 8321501342719085292, guid: 921db53cd7ee99643a9a5172613ccd02, type: 3}

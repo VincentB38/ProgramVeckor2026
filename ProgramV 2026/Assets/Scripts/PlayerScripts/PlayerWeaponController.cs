@@ -1,36 +1,80 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    [SerializeField] private Transform weaponRoot;     // Body/WeaponRoot
-    [SerializeField] private GameObject weaponPrefab;  // AssaultRifle
-    [SerializeField] private GameObject bulletPrefab;
+    [Header("References")]
+    [SerializeField] private Transform weaponRoot; // Player -> WeaponRoot
 
-    private Weapon currentWeapon;
+    [Header("Weapon Slots (max 2)")]
+    [SerializeField] private GameObject weaponSlot1Prefab;
+    [SerializeField] private GameObject weaponSlot2Prefab;
+
+    private Weapon[] weapons = new Weapon[2];
+    private int activeWeaponIndex = 0;
 
     private void Start()
     {
-        EquipWeapon();
+        EquipWeapons();
+        SwitchWeapon(0);
     }
 
     private void Update()
     {
-        if (currentWeapon == null) return;
+        HandleSwitchInput();
+        HandleShooting();
+    }
+
+    private void HandleShooting()
+    {
+        Weapon weapon = weapons[activeWeaponIndex];
+        if (weapon == null) return;
 
         if (Keyboard.current.spaceKey.isPressed)
         {
-            currentWeapon.TryFire(bulletPrefab);
+            weapon.TryFire(); // ✅ CORRECT
         }
     }
 
-    private void EquipWeapon()
+    private void HandleSwitchInput()
     {
-        GameObject weapon = Instantiate(weaponPrefab, weaponRoot);
-        weapon.transform.localPosition = Vector3.zero;
-        weapon.transform.localRotation = Quaternion.identity;
-        weapon.transform.localScale = Vector3.one;
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            SwitchWeapon(0);
 
-        currentWeapon = weapon.GetComponent<Weapon>();
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            SwitchWeapon(1);
+    }
+
+    private void EquipWeapons()
+    {
+        if (weaponSlot1Prefab != null)
+            weapons[0] = SpawnWeapon(weaponSlot1Prefab);
+
+        if (weaponSlot2Prefab != null)
+            weapons[1] = SpawnWeapon(weaponSlot2Prefab);
+    }
+
+    private Weapon SpawnWeapon(GameObject weaponPrefab)
+    {
+        GameObject weaponObj = Instantiate(weaponPrefab, weaponRoot);
+        weaponObj.transform.localPosition = Vector3.zero;
+        weaponObj.transform.localRotation = Quaternion.identity;
+        weaponObj.transform.localScale = Vector3.one;
+
+        return weaponObj.GetComponent<Weapon>();
+    }
+
+    private void SwitchWeapon(int index)
+    {
+        if (index < 0 || index >= weapons.Length) return;
+        if (weapons[index] == null) return;
+
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i] != null)
+                weapons[i].gameObject.SetActive(i == index);
+        }
+
+        activeWeaponIndex = index;
     }
 }

@@ -4,25 +4,30 @@ using System.Collections;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Weapon Stats")]
+    [SerializeField] private int damage = 10;
     [SerializeField] private int ammoMagazine = 30;
     [SerializeField] private float fireRate = 0.12f;
     [SerializeField] private float reloadRate = 1.2f;
     [SerializeField] private float bulletSpeed = 15f;
 
+    [Header("Bullet")]
+    [SerializeField] private GameObject bulletPrefab;   // 🔥 per-weapon bullet
+
     [Header("References")]
     public Transform MuzzlePos;
-    [SerializeField] private Transform bulletsParent; // ← Bullets object
+    [SerializeField] private Transform bulletsParent;
 
     private int currentAmmo;
     private float nextFireTime;
     private bool isReloading;
 
-    private void Awake()
+    private void OnEnable()
     {
         currentAmmo = ammoMagazine;
+        isReloading = false;
 
-        // Auto-find Bullets object if not set
+        // Auto-find Bullets parent
         if (bulletsParent == null)
         {
             GameObject bullets = GameObject.Find("Bullets");
@@ -31,7 +36,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void TryFire(GameObject bulletPrefab)
+    public void TryFire()
     {
         if (Time.time < nextFireTime || isReloading) return;
 
@@ -41,15 +46,14 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        Fire(bulletPrefab);
+        Fire();
         nextFireTime = Time.time + fireRate;
     }
 
-    private void Fire(GameObject bulletPrefab)
+    private void Fire()
     {
-        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(
-            Mouse.current.position.ReadValue()
-        );
+        Vector2 mouseWorld =
+            Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         Vector2 direction =
             (mouseWorld - (Vector2)MuzzlePos.position).normalized;
@@ -58,8 +62,13 @@ public class Weapon : MonoBehaviour
             bulletPrefab,
             MuzzlePos.position,
             Quaternion.identity,
-            bulletsParent        // ✅ PARENTED HERE
+            bulletsParent
         );
+
+        // Pass damage to bullet
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+            bulletScript.SetDamage(damage);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * bulletSpeed;
@@ -74,4 +83,10 @@ public class Weapon : MonoBehaviour
         currentAmmo = ammoMagazine;
         isReloading = false;
     }
+
+    #region Getters (optional for UI)
+    public int GetCurrentAmmo() => currentAmmo;
+    public int GetAmmoMagazine() => ammoMagazine;
+    public int GetDamage() => damage;
+    #endregion
 }
