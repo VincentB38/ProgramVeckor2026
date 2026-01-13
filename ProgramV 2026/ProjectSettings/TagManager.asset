@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OnGround
   - Wall
+  - HealthGiver
   layers:
   - Default
   - TransparentFX

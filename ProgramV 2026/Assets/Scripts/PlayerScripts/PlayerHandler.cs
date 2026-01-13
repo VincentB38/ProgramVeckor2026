@@ -28,7 +28,7 @@ public class PlayerHandler : MonoBehaviour
     {
         Health += amount;
 
-        CalculateHearts(); // Recalculate the visual hearts
+        CreateHearts(); // Recalculate the visual hearts
     }
 
     public void UpdateScore(int amount) // Update score
@@ -38,26 +38,26 @@ public class PlayerHandler : MonoBehaviour
 
     void CreateHearts()
     {
+
+        for (int i = HeartContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(HeartContainer.GetChild(i).gameObject);
+        }
+
+        Hearts.Clear(); // Clear list
+
         for (int i = 0; i < Health; i++) // Skappar hjärtan baserat på health
         {
             GameObject heartObj = Instantiate(HeartPreFab, HeartContainer);
             heartObj.name = "Heart" + i;
 
-            RectTransform rt = heartObj.GetComponent<RectTransform>(); // Placera Hjärtan
-            rt.anchoredPosition = new Vector2(-1158 + (178 *i), 569); // Start Position, ökar med 178 på x led varje ny hjärta
+            RectTransform rt = heartObj.GetComponent<RectTransform>(); // Place the hearts
+            rt.anchoredPosition = new Vector2(-1158 + (178 *i), 569); // Start Position, increase with 178 on x axis for every new heart
 
-            RawImage heartImage = heartObj.GetComponent<RawImage>(); // lägga til i listan
+            RawImage heartImage = heartObj.GetComponent<RawImage>(); // add into the list
 
             if (heartImage != null)
                Hearts.Add(heartImage);
-        }
-    }
-
-    void CalculateHearts() // if they should be active or not
-    {
-        for (int i = 0; i < Hearts.Count; i++) // loop through
-        {
-          Hearts[i].gameObject.SetActive(i < Health); // checks
         }
     }
 }
