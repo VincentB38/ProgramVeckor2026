@@ -6,11 +6,9 @@ TagManager:
   tags:
   - OnGround
   - Wall
-<<<<<<< Updated upstream
   - HealthGiver
-=======
   - Enemy
->>>>>>> Stashed changes
+  - WeaponType
   layers:
   - Default
   - TransparentFX
@@ -19,7 +17,7 @@ TagManager:
   - Water
   - UI
   - LayerTriggers
-  - enemy
+  - 
   - 
   - 
   - 

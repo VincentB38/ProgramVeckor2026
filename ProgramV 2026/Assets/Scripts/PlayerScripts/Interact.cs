@@ -64,7 +64,9 @@ public class Interact : MonoBehaviour
         } 
         else if (Item.CompareTag("WeaponType")) // weapon function
         {
-
+            Destroy(Item, 0);
+            GameObject WeaponPreFab = Item.GetComponent<ItemToEquip>().GetItem();
+            transform.GetComponent<PlayerWeaponController>().ChangeWeapon(WeaponPreFab);
         }
     }
 
@@ -76,7 +78,8 @@ public class Interact : MonoBehaviour
         }
         else if (Item.CompareTag("WeaponType"))
         {
-            interactText.text = "Press 'E' to Pickup";
+            GameObject WeaponPreFab = Item.GetComponent<ItemToEquip>().GetItem();
+            interactText.text = "Press 'E' to Pickup: " + WeaponPreFab.name;
         }
     }
 }

@@ -46,7 +46,7 @@ public class PlayerHandler : MonoBehaviour
 
         Hearts.Clear(); // Clear list
 
-        for (int i = 0; i < Health; i++) // Skappar hjärtan baserat på health
+        for (int i = 0; i < Health; i++) // Creates hearts based of health
         {
             GameObject heartObj = Instantiate(HeartPreFab, HeartContainer);
             heartObj.name = "Heart" + i;
