@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int JumpPower;
 
     public GameObject GunPart;
+    public GameObject FlooringHolder; // Store all the jump things
 
     Rigidbody2D Player;
 
@@ -76,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
             if (Keyboard.current.wKey.wasPressedThisFrame && isGrounded)
             {
                 Player.linearVelocity = new Vector2(Player.linearVelocity.x, JumpPower);
+            } 
+            else if (Keyboard.current.sKey.wasPressedThisFrame && isGrounded)
+            {
+                StartCoroutine(FallThrough());
             }
         }
     }
@@ -100,5 +105,27 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(DashCooldownTime);
         DashCooldown = false;
+    }
+
+    private IEnumerator FallThrough() // Väntetid för dash
+    {
+        foreach (Transform child in FlooringHolder.transform) // rotate to change the direction of it, making the player fall through
+        {
+            GameObject item = child.gameObject;
+            PlatformEffector2D effector = item.GetComponent<PlatformEffector2D>();
+
+            effector.rotationalOffset = 180f;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+
+        foreach (Transform child in FlooringHolder.transform) // fixing the rotation
+        {
+            GameObject item = child.gameObject;
+            PlatformEffector2D effector = item.GetComponent<PlatformEffector2D>();
+
+            effector.rotationalOffset = 0f;
+        }
     }
 }
