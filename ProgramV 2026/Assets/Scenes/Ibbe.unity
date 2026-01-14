@@ -328,12 +328,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404651289}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.52, y: -1.42, z: 1}
-  m_LocalScale: {x: 3.4499998, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.783, z: 0}
+  m_LocalScale: {x: 3.4499998, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1181209538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &404651293
 PlatformEffector2D:
@@ -665,6 +665,39 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1181209537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181209538}
+  m_Layer: 0
+  m_Name: Flooring
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181209538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181209537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.52, y: -1.42, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 404651292}
+  - {fileID: 1841453413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461583962
@@ -1182,12 +1215,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841453410}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.98, y: 1.19, z: 0}
-  m_LocalScale: {x: 6, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.46, y: 1.827, z: -1}
+  m_LocalScale: {x: 6, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1181209538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1841453414
 PlatformEffector2D:
@@ -1431,8 +1464,8 @@ MonoBehaviour:
   Speed: 5
   JumpPower: 7
   GunPart: {fileID: 1461583962}
-  FlooringHolder: {fileID: 0}
-  DashSpeed: 0
+  FlooringHolder: {fileID: 1181209537}
+  DashSpeed: 100
   DashDuration: 0
   DashCooldownTime: 0
 --- !u!50 &2034527941
@@ -1654,6 +1687,7 @@ MonoBehaviour:
   damageRateSeconds: 5
   attackRange: 1.5
   jumpHeight: 25
+  yOffset: 1.1
   jumpCooldown: 0.5
   jumpTimer: 2
 --- !u!1660057539 &9223372036854775807
@@ -1663,8 +1697,7 @@ SceneRoots:
   - {fileID: 1621248045}
   - {fileID: 707855612}
   - {fileID: 1592834826}
-  - {fileID: 404651292}
-  - {fileID: 1841453413}
+  - {fileID: 1181209538}
   - {fileID: 2034527943}
   - {fileID: 467769638}
   - {fileID: 669091511}

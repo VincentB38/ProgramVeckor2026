@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Enemy_Melee : Enemy
 {
@@ -12,11 +13,17 @@ public class Enemy_Melee : Enemy
     [SerializeField] float damageRateSeconds;
     [SerializeField] float attackRange;
     [SerializeField] float jumpHeight;
+    [SerializeField] float yOffset;
+
+
+    [SerializeField] GameObject flooringHolder;
 
     [SerializeField] float jumpCooldown = 2f;  // Cooldown for jump
     [SerializeField] float jumpTimer;  // The variable that is used for calculating the time
     bool hasJumped = false;
     bool shouldJump = false;
+
+    GameObject groundObject;
 
 
     // Adding variables to sprite and animator
@@ -35,7 +42,7 @@ public class Enemy_Melee : Enemy
         {
             if (!hasJumped && shouldJump) // Checks if it has jumped and if it should
             {
-                base.LayerMove();
+                base.LayerMove(groundObject, yOffset, flooringHolder);
                 hasJumped = true;
                 shouldJump = false;
                 jumpTimer = jumpCooldown;
@@ -47,6 +54,7 @@ public class Enemy_Melee : Enemy
         }
 
         Move(CheckPlayerPosition(), transform, playerTransform.GetComponent<PlayerHandler>());
+
     }
 
     void CalculateCooldown()
@@ -76,6 +84,8 @@ public class Enemy_Melee : Enemy
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        groundObject = collision.gameObject;
+
         if (collision.gameObject.CompareTag("OnGround"))
         {
             isGrounded = true;
