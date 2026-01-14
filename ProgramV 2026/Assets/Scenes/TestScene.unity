@@ -154,7 +154,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 342, y: -474}
-  m_SizeDelta: {x: 1522.9746, y: 233.6422}
+  m_SizeDelta: {x: 1700, y: 233.6422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26773258
 MonoBehaviour:
@@ -1141,6 +1141,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 440673603657419152, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.78826714
+      objectReference: {fileID: 0}
+    - target: {fileID: 440673603657419152, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2999549
+      objectReference: {fileID: 0}
+    - target: {fileID: 440673603657419152, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.052933216
+      objectReference: {fileID: 0}
+    - target: {fileID: 440673603657419152, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.008822203
+      objectReference: {fileID: 0}
+    - target: {fileID: 440673603657419152, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 440673603657419152, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9881525
@@ -1193,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5462030556061711831, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ccc4168d8f8cfd4da63690095be3115, type: 3}
     - target: {fileID: 8558699128681871354, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_GravityScale
       value: 1
