@@ -1394,8 +1394,8 @@ Transform:
   m_GameObject: {fileID: 1391044931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.55, y: 5.41, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10.58, y: 5.24, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7457150952228767580}
@@ -1447,8 +1447,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.14917946, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 813ea79c765b009479edda9da34bed13, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1472,6 +1472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemToEquip
   WeaponPreFab: {fileID: 0}
   PointGain: 5
+  floatAmplitude: 0.2
+  floatFrequency: 1
 --- !u!1 &1420307098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,8 +1658,8 @@ Transform:
   m_GameObject: {fileID: 1442333636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.83, y: 4.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.83, y: 4.2, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7457150952228767580}
@@ -1709,8 +1711,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.14917946, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 813ea79c765b009479edda9da34bed13, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1734,6 +1736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemToEquip
   WeaponPreFab: {fileID: 0}
   PointGain: 5
+  floatAmplitude: 0.2
+  floatFrequency: 1
 --- !u!1 &1489794979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemToEquip
   WeaponPreFab: {fileID: 7135761585660305779, guid: 020d3ba8d02e77f4193e1cacdcc94960, type: 3}
   PointGain: 25
+  floatAmplitude: 0.2
+  floatFrequency: 1
 --- !u!212 &1728028127
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2071,7 +2077,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b9a488741457f64d9acc979ad154a7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2091,8 +2097,8 @@ Transform:
   m_GameObject: {fileID: 1728028125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5700002, y: 3.7870998, z: 0}
-  m_LocalScale: {x: 1, y: 0.8171, z: 1}
+  m_LocalPosition: {x: -2.59, y: 3.42, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7457150952228767580}
@@ -2863,8 +2869,8 @@ Transform:
   m_GameObject: {fileID: 5506892514307656100}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.56, y: 1.2999997, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.56, y: 0.98, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7457150952228767580}
@@ -2934,8 +2940,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.14917946, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 813ea79c765b009479edda9da34bed13, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2959,6 +2965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemToEquip
   WeaponPreFab: {fileID: 0}
   PointGain: 5
+  floatAmplitude: 0.2
+  floatFrequency: 1
 --- !u!4 &7457150952228767580
 Transform:
   m_ObjectHideFlags: 0
