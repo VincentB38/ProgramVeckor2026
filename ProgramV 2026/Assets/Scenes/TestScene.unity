@@ -562,7 +562,6 @@ MonoBehaviour:
   JumpPower: 10
   GunPart: {fileID: 316330559}
   FlooringHolder: {fileID: 610596402}
-  PlayerLayer: 0
   DashSpeed: 15
   DashDuration: 0.2
   DashCooldownTime: 2

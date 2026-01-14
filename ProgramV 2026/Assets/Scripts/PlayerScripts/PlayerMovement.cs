@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D Player;
 
-    [SerializeField] int PlayerLayer;
-
     private bool isGrounded;
 
     public float DashSpeed;      // Hur snabb dashen är
@@ -33,11 +31,6 @@ public class PlayerMovement : MonoBehaviour
         Player = GetComponent<Rigidbody2D>();
 
         
-    }
-
-    public int PlayerLayerCheck()
-    {
-        return PlayerLayer;
     }
 
     // Update is called once per frame
@@ -114,14 +107,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
         }
-
-        print(collision.gameObject.name);
-        
-            if (int.TryParse(collision.gameObject.name, out int number))
-            {
-                Debug.Log(number);
-                PlayerLayer = number;
-            }
      }
 
 
@@ -131,8 +116,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
-
-        PlayerLayer = 0;
     }
 
     private IEnumerator DashCooldownTimer() // Väntetid för dash
@@ -141,25 +124,29 @@ public class PlayerMovement : MonoBehaviour
         DashCooldown = false;
     }
 
-    private IEnumerator FallThrough() // Väntetid för dash
+    private IEnumerator FallThrough()
     {
-        foreach (Transform child in FlooringHolder.transform) // rotate to change the direction of it, making the player fall through
-        {
-            GameObject item = child.gameObject;
-            PlatformEffector2D effector = item.GetComponent<PlatformEffector2D>();
+        Collider2D playerCollider = Player.GetComponent<Collider2D>();
 
-            effector.rotationalOffset = 180f;
+        foreach (Transform child in FlooringHolder.transform)
+        {
+            Collider2D platformCollider = child.GetComponent<Collider2D>();
+            if (platformCollider != null)
+            {
+                // Ignore collisions between player and platform
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, true);
+            }
         }
 
         yield return new WaitForSeconds(0.3f);
 
-
-        foreach (Transform child in FlooringHolder.transform) // fixing the rotation
+        foreach (Transform child in FlooringHolder.transform)
         {
-            GameObject item = child.gameObject;
-            PlatformEffector2D effector = item.GetComponent<PlatformEffector2D>();
-
-            effector.rotationalOffset = 0f;
+            Collider2D platformCollider = child.GetComponent<Collider2D>();
+            if (platformCollider != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+            }
         }
     }
 }
