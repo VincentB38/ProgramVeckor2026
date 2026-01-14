@@ -68,6 +68,7 @@ public class Interact : MonoBehaviour
             GameObject WeaponPreFab = Item.GetComponent<ItemToEquip>().GetItem();
             transform.GetComponent<PlayerWeaponController>().ChangeWeapon(WeaponPreFab);
         }
+        gameObject.GetComponent<PlayerHandler>().UpdateScore(Item.GetComponent<ItemToEquip>().PointGain); // Give Points
     }
 
     void SetText(GameObject Item) // set the text depending on what item it is
