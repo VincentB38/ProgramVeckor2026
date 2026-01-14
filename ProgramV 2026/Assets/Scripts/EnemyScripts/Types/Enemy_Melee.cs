@@ -32,7 +32,11 @@ public class Enemy_Melee : Enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        base.SetValues(GetComponent<Rigidbody2D>(), moveSpeed, attackRange, damageRateSeconds, playerTransform, jumpHeight);
+        playerTransform = GameObject.Find("Player").transform;
+        flooringHolder = GameObject.Find("Floors");
+
+        base.SetValues(GetComponent<Rigidbody2D>(), moveSpeed, attackRange, damageRateSeconds, playerTransform, jumpHeight, damageAmount);
+
     }
 
     // Update is called once per frame
@@ -74,10 +78,20 @@ public class Enemy_Melee : Enemy
     {
         if (playerTransform.position.x < transform.position.x)
         {
+            transform.eulerAngles = new Vector3(
+          transform.eulerAngles.x,
+          180f,
+          transform.eulerAngles.z
+          );
             return -1; // Player is on the left
         }
         else
         {
+            transform.eulerAngles = new Vector3(
+          transform.eulerAngles.x,
+          0f,
+          transform.eulerAngles.z
+          );
             return 1; // Player is to the right
         }
     }

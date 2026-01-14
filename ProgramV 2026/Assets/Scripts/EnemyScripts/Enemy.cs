@@ -20,11 +20,12 @@ public class Enemy : MonoBehaviour
     Transform player;
 
     // Function that sets all values as a replacement for a constructor
-    public void SetValues(Rigidbody2D rb, float speed, float distanceToPlayer, float damageRate, Transform player, float jumpPower)
+    public void SetValues(Rigidbody2D rb, float speed, float distanceToPlayer, float damageRate, Transform player, float jumpPower, int damage)
     {
         this.speed = speed;
         this.distanceToPlayer = distanceToPlayer;
         this.damageRate = damageRate;
+        this.damage = damage;
         this.player = player;
         this.rb = rb;
         this.jumpPower = jumpPower;
@@ -73,7 +74,7 @@ public class Enemy : MonoBehaviour
             // Code for moving upwards
             rb.linearVelocityY = jumpPower; // Only affects y axis, Enemy jumps
         }
-        else if (transform.position.y * (distance - 0.2f) > player.position.y) // Player is Under
+        else if (transform.position.y * (distance - 0.3f) > player.position.y) // Player is Under
         {
             // Code for moving Downwards
             if (groundObject.GetComponent<PlatformEffector2D>() != null)

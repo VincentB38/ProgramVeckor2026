@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
             Player.linearVelocity = new Vector2(direction * Speed, Player.linearVelocity.y);
 
             // Hoppa
-            if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+            if (Keyboard.current.wKey.wasPressedThisFrame && isGrounded)
             {
                 Player.linearVelocity = new Vector2(Player.linearVelocity.x, JumpPower);
             } 
