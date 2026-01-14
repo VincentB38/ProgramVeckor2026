@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
                 {
                     // Add weapon system where it either shoots or hits
                     StartCoroutine(WaitToAttack());
+                    Debug.Log("Attacked Player");
                     Attack(playerHandler);
                 }
             }
@@ -70,32 +71,21 @@ public class Enemy : MonoBehaviour
         if (transform.position.y * distance < player.position.y) // Player is Above
         {
             // Code for moving upwards
-            rb.linearVelocityY = jumpPower; // Only affects y axis
-            Debug.Log("Enemy Jumped");
+            rb.linearVelocityY = jumpPower; // Only affects y axis, Enemy jumps
         }
         else if (transform.position.y * (distance - 0.2f) > player.position.y) // Player is Under
         {
             // Code for moving Downwards
             if (groundObject.GetComponent<PlatformEffector2D>() != null)
             {
-                Debug.Log("Enemy went down");
-
-                StartCoroutine(FallThrough(flooringHolder));
+                StartCoroutine(FallThrough(flooringHolder)); // Enemy falls through
             }
-            else
-            {
-                Debug.Log("PlatformEffector2D is null in Enemy Class Script");
-            }
-        }
-        else // Player is on the same level
-        {
-            Debug.Log("Enemy stayed the same");
         }
     }
 
     public virtual void Attack(PlayerHandler player)
     {
-        player.ChangeHealth(-damage);
+        player.ChangeHealth(-damage); // Enemy attacks
     }
 
     IEnumerator WaitToAttack()

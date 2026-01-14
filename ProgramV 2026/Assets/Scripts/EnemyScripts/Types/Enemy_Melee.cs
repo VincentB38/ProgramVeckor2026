@@ -8,18 +8,18 @@ public class Enemy_Melee : Enemy
     bool isGrounded;
 
     // Variables that corresponds to the base but still can be accessed through the editor
-    [SerializeField] float moveSpeed;
-    [SerializeField] int damageAmount;
-    [SerializeField] float damageRateSeconds;
-    [SerializeField] float attackRange;
-    [SerializeField] float jumpHeight;
-    [SerializeField] float yOffset;
+    public float moveSpeed;
+    public int damageAmount;
+    public float damageRateSeconds;
+    public float attackRange;
+    public float jumpHeight;
+    public float yOffset;
 
 
-    [SerializeField] GameObject flooringHolder;
+    public GameObject flooringHolder;
 
-    [SerializeField] float jumpCooldown = 2f;  // Cooldown for jump
-    [SerializeField] float jumpTimer;  // The variable that is used for calculating the time
+    public float jumpCooldown = 2f;  // Cooldown for jump
+    public float jumpTimer;  // The variable that is used for calculating the time
     bool hasJumped = false;
     bool shouldJump = false;
 
@@ -53,7 +53,7 @@ public class Enemy_Melee : Enemy
             }
         }
 
-        Move(CheckPlayerPosition(), transform, playerTransform.GetComponent<PlayerHandler>());
+        Move(CheckPlayerPosition(), transform, playerTransform.gameObject.GetComponent<PlayerHandler>());
 
     }
 

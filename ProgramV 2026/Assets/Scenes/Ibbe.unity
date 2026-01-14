@@ -329,8 +329,8 @@ Transform:
   m_GameObject: {fileID: 404651289}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.783, z: 0}
-  m_LocalScale: {x: 3.4499998, y: 0.4, z: 1}
+  m_LocalPosition: {x: -0.25, y: 0.2, z: 0}
+  m_LocalScale: {x: 3.4499998, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1181209538}
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a54c33f8f6ea2841acd2bf77de5118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnManager
-  enemyPrefab: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+  enemyPrefab: {fileID: 2145778252}
   spawnInterval: 2
   maxTotalSpawns: 20
   maxAliveEnemies: 5
@@ -1217,7 +1217,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.46, y: 1.827, z: -1}
-  m_LocalScale: {x: 6, y: 0.4, z: 1}
+  m_LocalScale: {x: 6, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1181209538}
@@ -1483,7 +1483,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1562,7 +1562,7 @@ Transform:
   m_GameObject: {fileID: 2034527938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.09, y: 2.26, z: 0}
+  m_LocalPosition: {x: 0.08, y: 3.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1688,6 +1688,7 @@ MonoBehaviour:
   attackRange: 1.5
   jumpHeight: 25
   yOffset: 1.1
+  flooringHolder: {fileID: 1181209537}
   jumpCooldown: 0.5
   jumpTimer: 2
 --- !u!1660057539 &9223372036854775807
