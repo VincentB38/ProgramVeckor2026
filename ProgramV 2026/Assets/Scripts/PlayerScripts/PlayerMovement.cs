@@ -1,7 +1,8 @@
+using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,16 +42,27 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
         {
             direction = 1f; // höger
-           //GunPart.transform.position = new Vector2(1.4f, 0.14f);
+            GunPart.transform.position = new Vector2(transform.position.x * 0.89f, transform.position.y);
+
+            transform.eulerAngles = new Vector3(
+            transform.eulerAngles.x,
+            0f,
+            transform.eulerAngles.z
+            );
         }
         else if (Keyboard.current.aKey.isPressed)
         {
             direction = -1f; // vänster
-          //  GunPart.transform.position = new Vector2(-1.4f, 0.14f);
+            GunPart.transform.position = new Vector2(transform.position.x *1.11f, transform.position.y);
+            transform.eulerAngles = new Vector3(
+            transform.eulerAngles.x,
+            180f,
+            transform.eulerAngles.z
+);
         }
 
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && !DashCooldown)
+        if (Mouse.current.rightButton.isPressed && !DashCooldown)
         {
             if (direction != 0) // Bara dasha om man rör sig vänster eller höger
             {
@@ -76,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
             Player.linearVelocity = new Vector2(direction * Speed, Player.linearVelocity.y);
 
             // Hoppa
-            if (Keyboard.current.wKey.wasPressedThisFrame && isGrounded)
+            if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
             {
                 Player.linearVelocity = new Vector2(Player.linearVelocity.x, JumpPower);
             } 
@@ -89,11 +101,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) // För att se om man är på marken eller inte
     {
-        if (collision.gameObject.CompareTag("OnGround") && (collision.gameObject.transform.position.y *1.05f < Player.transform.position.y))
+        // Ground check
+        if (collision.gameObject.CompareTag("OnGround") &&
+            collision.gameObject.transform.position.y * 1.05f < Player.transform.position.y)
         {
             isGrounded = true;
         }
-    }
+     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -109,25 +124,29 @@ public class PlayerMovement : MonoBehaviour
         DashCooldown = false;
     }
 
-    private IEnumerator FallThrough() // Väntetid för dash
+    private IEnumerator FallThrough()
     {
-        foreach (Transform child in FlooringHolder.transform) // rotate to change the direction of it, making the player fall through
-        {
-            GameObject item = child.gameObject;
-            PlatformEffector2D effector = item.GetComponent<PlatformEffector2D>();
+        Collider2D playerCollider = Player.GetComponent<Collider2D>();
 
-            effector.rotationalOffset = 180f;
+        foreach (Transform child in FlooringHolder.transform)
+        {
+            Collider2D platformCollider = child.GetComponent<Collider2D>();
+            if (platformCollider != null)
+            {
+                // Ignore collisions between player and platform
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, true);
+            }
         }
 
         yield return new WaitForSeconds(0.3f);
 
-
-        foreach (Transform child in FlooringHolder.transform) // fixing the rotation
+        foreach (Transform child in FlooringHolder.transform)
         {
-            GameObject item = child.gameObject;
-            PlatformEffector2D effector = item.GetComponent<PlatformEffector2D>();
-
-            effector.rotationalOffset = 0f;
+            Collider2D platformCollider = child.GetComponent<Collider2D>();
+            if (platformCollider != null)
+            {
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+            }
         }
     }
 }

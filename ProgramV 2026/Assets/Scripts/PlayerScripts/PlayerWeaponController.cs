@@ -23,7 +23,6 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void ChangeWeapon(GameObject newWeaponPrefab)
     {
-        print("Changing weapon...");
 
         if (weaponSlot2Prefab == null)
         {
@@ -63,9 +62,6 @@ public class PlayerWeaponController : MonoBehaviour
 
         // Activate the new weapon
         SwitchWeapon(activeWeaponIndex);
-
-
-        print("Weapon changed to " + newWeaponPrefab.name);
     }
 
     private void Update()
@@ -81,7 +77,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         if (Mouse.current.leftButton.isPressed)
         {
-            weapon.TryFire(); // ✅ CORRECT
+            weapon.TryFire();
         }
     }
 
