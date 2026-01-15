@@ -10,6 +10,7 @@ public class Enemy_Ranged : Enemy
     public float moveSpeed;
     public int damageAmount;
     public float damageRateSeconds;
+    public float bulletSpeed;
     public float attackRange;
     public float jumpHeight;
     public float yOffset;
@@ -64,7 +65,12 @@ public class Enemy_Ranged : Enemy
     protected override void Attack(PlayerHandler player)
     {
         Debug.Log("Ranged Attack");
-        // 
+        // Shoots bullets towards the player
+
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D rigidBodyBullet = bullet.GetComponent<Rigidbody2D>();
+
+        rigidBodyBullet.linearVelocity = (playerTransform.position - transform.position).normalized * bulletSpeed;
     }
 
     void CalculateCooldown()
