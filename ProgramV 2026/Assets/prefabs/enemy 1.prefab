@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5462030556061711831}
   - component: {fileID: 8558699128681871354}
   - component: {fileID: 440673603657419152}
+  - component: {fileID: 1434440343674637581}
   m_Layer: 0
   m_Name: enemy 1
   m_TagString: Untagged
@@ -165,3 +166,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1434440343674637581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953433062167470132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3849ff3edc16e34595073349d13ca4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Melee
+  playerTransform: {fileID: 0}
+  moveSpeed: 3
+  damageAmount: 1
+  damageRateSeconds: 5
+  attackRange: 1.5
+  jumpHeight: 40
+  yOffset: 1.2
+  flooringHolder: {fileID: 0}
+  jumpCooldown: 0.5
+  jumpTimer: 2

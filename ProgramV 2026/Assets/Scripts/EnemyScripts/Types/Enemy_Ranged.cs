@@ -14,6 +14,7 @@ public class Enemy_Ranged : Enemy
     public float jumpHeight;
     public float yOffset;
 
+    public GameObject bulletPrefab;
 
     public GameObject flooringHolder;
 
@@ -58,6 +59,12 @@ public class Enemy_Ranged : Enemy
 
         Move(CheckPlayerPosition(), transform, playerTransform.gameObject.GetComponent<PlayerHandler>());
 
+    }
+
+    protected override void Attack(PlayerHandler player)
+    {
+        Debug.Log("Ranged Attack");
+        // 
     }
 
     void CalculateCooldown()
