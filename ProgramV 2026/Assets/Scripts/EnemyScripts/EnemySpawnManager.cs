@@ -7,6 +7,7 @@ using TMPro; // Add this for TextMeshPro
 public class EnemyGroup // Creates the information for each group
 {
     public GameObject enemyPrefab;
+    public GameObject pickUpFolder;
     public int quantity = 1;
     public float spawnInterval = 0.5f;
     public List<Transform> spawnPoints = new List<Transform>();
@@ -100,10 +101,23 @@ public class EnemySpawnManager : MonoBehaviour
         Transform spawnPoint = group.spawnPoints[Random.Range(0, group.spawnPoints.Count)]; // Randomly spawn between the assigned spawnpoints
         GameObject enemy = Instantiate(group.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        if (enemyFolder != null)
-            enemy.transform.SetParent(enemyFolder);
+        // If it spawns a pick up
+        if (enemy.gameObject.CompareTag("HealthGiver"))
+        {
+            enemy.transform.parent = group.pickUpFolder.transform;
+        }
 
-        aliveEnemies++;
+        if (enemyFolder != null && !enemy.gameObject.CompareTag("HealthGiver"))
+        {
+            enemy.transform.SetParent(enemyFolder);
+        }
+        else if (enemy.gameObject.CompareTag("HealthGiver"))
+        {
+            enemy.transform.SetParent(group.pickUpFolder.transform);
+        }
+
+
+            aliveEnemies++;
 
         EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
         tracker.spawner = this;
