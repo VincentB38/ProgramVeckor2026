@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float fireRate = 0.12f;
     [SerializeField] private float reloadRate = 1.2f;
     [SerializeField] private float bulletSpeed = 15f;
+    [SerializeField] private TextMeshProUGUI ReloadText;
 
     [Header("Bullet")]
-    [SerializeField] private GameObject bulletPrefab;   // 🔥 per-weapon bullet
+    [SerializeField] private GameObject bulletPrefab;  
 
     [Header("References")]
     public Transform MuzzlePos;
@@ -21,6 +23,11 @@ public class Weapon : MonoBehaviour
     private int currentAmmo;
     private float nextFireTime;
     private bool isReloading;
+
+    private void Start()
+    {
+        ReloadText = GameObject.Find("Canvas").GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     private void OnEnable()
     {
@@ -78,10 +85,12 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Reload()
     {
+        ReloadText.text = "(Reloading)";
         isReloading = true;
         yield return new WaitForSeconds(reloadRate);
         currentAmmo = ammoMagazine;
         isReloading = false;
+        ReloadText.text = "";
     }
 
     #region Getters (optional for UI)

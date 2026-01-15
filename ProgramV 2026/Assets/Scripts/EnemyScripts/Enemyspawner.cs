@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -6,8 +7,11 @@ public class EnemySpawnManager : MonoBehaviour
     public float spawnInterval = 2f;
 
     [Header("Limits")]
-    public int maxTotalSpawns = 20;   // Total enemies that can ever spawn
-    public int maxAliveEnemies = 5;   // Enemies allowed alive at once
+    public int maxTotalSpawns = 20;
+    public int maxAliveEnemies = 5;
+
+    [Header("Spawn Points")]
+    public List<Transform> spawnPoints = new List<Transform>();
 
     [Header("Folder / Parent")]
     public Transform enemyFolder;
@@ -22,18 +26,28 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        // Stop if total spawn limit reached
         if (totalSpawned >= maxTotalSpawns)
         {
             CancelInvoke(nameof(SpawnEnemy));
             return;
         }
 
-        // Stop if too many enemies alive
         if (aliveEnemies >= maxAliveEnemies)
             return;
 
-        GameObject enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        if (spawnPoints.Count == 0)
+        {
+            Debug.LogWarning("No spawn points assigned!");
+            return;
+        }
+
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+
+        GameObject enemy = Instantiate(
+            enemyPrefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
 
         if (enemyFolder != null)
             enemy.transform.SetParent(enemyFolder);
@@ -41,12 +55,10 @@ public class EnemySpawnManager : MonoBehaviour
         totalSpawned++;
         aliveEnemies++;
 
-        // Tell the enemy who spawned it
         EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
         tracker.spawner = this;
     }
 
-    // Called when an enemy dies
     public void OnEnemyDestroyed()
     {
         aliveEnemies--;

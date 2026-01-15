@@ -78,9 +78,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   damage: 10
   ammoMagazine: 30
-  fireRate: 0.12
+  fireRate: 0.2
   reloadRate: 1.2
   bulletSpeed: 15
+  ReloadText: {fileID: 0}
   bulletPrefab: {fileID: 8321501342719085292, guid: 921db53cd7ee99643a9a5172613ccd02, type: 3}
   MuzzlePos: {fileID: 6268864709236208091}
   bulletsParent: {fileID: 0}
