@@ -15,6 +15,8 @@ public class Enemy_Ranged : Enemy
     public float jumpHeight;
     public float yOffset;
 
+    public int pointLoss;
+
     public GameObject bulletPrefab;
 
     public GameObject flooringHolder;
@@ -36,7 +38,7 @@ public class Enemy_Ranged : Enemy
         playerTransform = GameObject.Find("Player").transform;
         flooringHolder = GameObject.Find("Floors");
 
-        base.SetValues(GetComponent<Rigidbody2D>(), moveSpeed, attackRange, damageRateSeconds, playerTransform, jumpHeight, damageAmount);
+        base.SetValues(GetComponent<Rigidbody2D>(), moveSpeed, attackRange, damageRateSeconds, playerTransform, jumpHeight, damageAmount, pointLoss);
 
     }
 
@@ -67,8 +69,9 @@ public class Enemy_Ranged : Enemy
         Debug.Log("Ranged Attack");
         // Shoots bullets towards the player
 
+        // Creates bullet, sets values
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Enemy_Bullet>().SetValues(playerTransform.position - transform.position, bulletSpeed, damageAmount);
+        bullet.GetComponent<Enemy_Bullet>().SetValues(playerTransform.position - transform.position, bulletSpeed, damageAmount, pointLoss);
     }
 
     void CalculateCooldown()

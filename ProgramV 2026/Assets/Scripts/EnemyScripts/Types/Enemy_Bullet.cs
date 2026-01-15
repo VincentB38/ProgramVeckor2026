@@ -6,6 +6,7 @@ public class Enemy_Bullet : MonoBehaviour
     [SerializeField] private float lifeTime = 3f;
     private int damage;
     private float speed;
+    private int pointLoss;
 
     private Vector2 moveDirection;
     private Rigidbody2D rb;
@@ -35,11 +36,12 @@ public class Enemy_Bullet : MonoBehaviour
         rb.linearVelocity = moveDirection.normalized * speed;
     }
 
-    public void SetValues(Vector2 direction, float bulletSpeed, int dmg)
+    public void SetValues(Vector2 direction, float bulletSpeed, int dmg, int pointLoss)
     {
         moveDirection = direction;
         speed = bulletSpeed;
         damage = dmg;
+        this.pointLoss = pointLoss;
     }
 
     private void SetDirectionTowardsPlayer()
@@ -53,7 +55,7 @@ public class Enemy_Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHandler>().ChangeHealth(-damage);
-            other.GetComponent<PlayerHandler>().ChangeHealth(-damage);
+            other.GetComponent<PlayerHandler>().UpdateScore(-pointLoss);
             Destroy(gameObject);
         }
     }

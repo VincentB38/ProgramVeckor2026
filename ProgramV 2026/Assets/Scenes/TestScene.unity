@@ -3682,8 +3682,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
   Health: 5
-  HeartContainer: {fileID: 1284956216}
-  HeartPreFab: {fileID: 3196466387327115833, guid: e4f382e0b20b77945a36e04f9beeacde, type: 3}
+  HeartContainer: {fileID: 1151310540}
+  HeartPreFab: {fileID: 8045862145800101791, guid: b9e3704ab7678334f90872122f0f09e5, type: 3}
   PlayerScore: {fileID: 1849624556}
 --- !u!114 &477957201
 MonoBehaviour:
@@ -4141,67 +4141,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &522393260
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.00587
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.98878
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882431534562796783, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_Name
-      value: Hearts
-      objectReference: {fileID: 0}
-    - target: {fileID: 4699484969435618657, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: da2a325f4d914f3479124788d1039db5, type: 3}
 --- !u!1 &610596402
 GameObject:
   m_ObjectHideFlags: 0
@@ -9025,11 +8964,6 @@ Transform:
   - {fileID: 1192843607}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1284956216 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5954863493218766367, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-  m_PrefabInstance: {fileID: 522393260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1318420120
 GameObject:
   m_ObjectHideFlags: 0
@@ -17843,7 +17777,6 @@ SceneRoots:
   - {fileID: 477957205}
   - {fileID: 1176629646}
   - {fileID: 7457150952228767580}
-  - {fileID: 522393260}
   - {fileID: 2136770238}
   - {fileID: 1259063213}
   - {fileID: 31036455}
