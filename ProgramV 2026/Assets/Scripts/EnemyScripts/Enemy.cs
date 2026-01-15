@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     float damageRate;
     float distanceToPlayer;
     float jumpPower;
+    int PointLoss;
 
     bool cooldown = false;
 
@@ -20,7 +21,7 @@ public class Enemy : MonoBehaviour
     Transform player;
 
     // Function that sets all values as a replacement for a constructor
-    public void SetValues(Rigidbody2D rb, float speed, float distanceToPlayer, float damageRate, Transform player, float jumpPower, int damage)
+    public void SetValues(Rigidbody2D rb, float speed, float distanceToPlayer, float damageRate, Transform player, float jumpPower, int damage, int PointLoss)
     {
         this.speed = speed;
         this.distanceToPlayer = distanceToPlayer;
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         this.player = player;
         this.rb = rb;
         this.jumpPower = jumpPower;
+        this.PointLoss = PointLoss;
     }
 
     // Virtual function to make changes in each subclass
@@ -87,7 +89,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Attack(PlayerHandler player)
     {
         player.ChangeHealth(-damage); // Enemy attacks
-        player.UpdateScore(-25); // Lose 25 score
+        player.UpdateScore(-PointLoss); // Lose x score
     }
 
     IEnumerator WaitToAttack()

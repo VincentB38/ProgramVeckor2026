@@ -21,6 +21,7 @@ public class Enemy_Melee : Enemy
 
     public float jumpCooldown = 2f;  // Cooldown for jump
     public float jumpTimer;  // The variable that is used for calculating the time
+    public int PointDamageLoss;
     bool hasJumped = false;
     bool shouldJump = false;
 
@@ -36,7 +37,7 @@ public class Enemy_Melee : Enemy
         playerTransform = GameObject.Find("Player").transform;
         flooringHolder = GameObject.Find("Floors");
 
-        base.SetValues(GetComponent<Rigidbody2D>(), moveSpeed, attackRange, damageRateSeconds, playerTransform, jumpHeight, damageAmount);
+        base.SetValues(GetComponent<Rigidbody2D>(), moveSpeed, attackRange, damageRateSeconds, playerTransform, jumpHeight, damageAmount, PointDamageLoss);
 
     }
 

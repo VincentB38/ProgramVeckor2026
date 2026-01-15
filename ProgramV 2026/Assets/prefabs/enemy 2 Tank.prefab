@@ -32,10 +32,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9881525
@@ -78,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Name
-      value: enemy 1 Variant
+      value: enemy 2 Tank
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Layer
@@ -92,6 +88,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8ccc4168d8f8cfd4da63690095be3115, type: 3}
+    - target: {fileID: 5462030556061711831, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462030556061711831, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.30181903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462030556061711831, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8558699128681871354, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_GravityScale
       value: 10
@@ -103,6 +111,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 903360439519634946}
+    - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5479356775792997255}
   m_SourcePrefab: {fileID: 100100000, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
 --- !u!1 &395043321373711494 stripped
 GameObject:
@@ -121,5 +132,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae5ed2c74d09af49b59f41e2d32cbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 30
-  ScoreGain: 10
+  maxHealth: 125
+  ScoreGain: 25
+--- !u!114 &5479356775792997255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395043321373711494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3849ff3edc16e34595073349d13ca4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Melee
+  playerTransform: {fileID: 0}
+  moveSpeed: 2
+  damageAmount: 1
+  damageRateSeconds: 10
+  attackRange: 1.5
+  jumpHeight: 25
+  yOffset: 1.2
+  flooringHolder: {fileID: 0}
+  jumpCooldown: 1
+  jumpTimer: 2
