@@ -55,7 +55,7 @@ public class SceneManageLoader : MonoBehaviour
     // Opens "TestScene"
     public void OpenLevel1()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void OpenMainMenu()
@@ -72,7 +72,7 @@ public class SceneManageLoader : MonoBehaviour
         PlayerPrefs.SetInt("CurrentScore", 0);
         PlayerPrefs.Save();
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void LeaveGame()
