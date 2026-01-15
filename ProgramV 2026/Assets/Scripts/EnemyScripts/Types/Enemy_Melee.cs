@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -114,7 +115,7 @@ public class Enemy_Melee : Enemy
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 6) // These are for the layer triggers to tell the enemy when it is time to jump
         {
