@@ -7,7 +7,6 @@ using TMPro; // Add this for TextMeshPro
 public class EnemyGroup // Creates the information for each group
 {
     public GameObject enemyPrefab;
-    public GameObject pickUpFolder;
     public int quantity = 1;
     public float spawnInterval = 0.5f;
     public List<Transform> spawnPoints = new List<Transform>();
@@ -31,6 +30,17 @@ public class EnemySpawnManager : MonoBehaviour
 
     private int currentWaveIndex = 0;
     private int aliveEnemies = 0;
+
+    [Header("Heart Spawn Settings")]
+    public GameObject heartPrefab;
+    public GameObject goldenHeartPrefab;
+
+    public float goldenHeartChance = 0.10f; // 0.1 = 10%, 1 = 100%
+    public List<Transform> heartSpawnPoints = new List<Transform>();
+    public Transform InteractFolder;
+
+    public int minHeartsPerWave = 1;
+    public int maxHeartsPerWave = 3;
 
     private void Start()
     {
@@ -78,7 +88,7 @@ public class EnemySpawnManager : MonoBehaviour
         // Wait until all enemies from this wave are dead
         while (aliveEnemies > 0)
             yield return null;
-
+        SpawnHeartsAfterWave(); // Once enemies are less than 0 this will run
         currentWaveIndex++;
 
         if (currentWaveIndex < waves.Count) // continue if more waves exist
@@ -91,6 +101,38 @@ public class EnemySpawnManager : MonoBehaviour
         }
     }
 
+    private void SpawnHeartsAfterWave()
+    {
+        if (heartPrefab == null || heartSpawnPoints.Count == 0) // if there's no spawnpoints 
+            return;
+
+        int heartsToSpawn = Random.Range(minHeartsPerWave, maxHeartsPerWave + 1);
+
+        List<Transform> availablePoints = new List<Transform>(heartSpawnPoints); // Store where the heart can spawn
+
+        for (int i = 0; i < heartsToSpawn && availablePoints.Count > 0; i++)
+        {
+            int index = Random.Range(0, availablePoints.Count);
+            Transform spawnPoint = availablePoints[index];
+            availablePoints.RemoveAt(index);
+
+            GameObject prefabToSpawn =
+                (goldenHeartPrefab != null && Random.value <= goldenHeartChance) // Chooses which heart to spawn
+                ? goldenHeartPrefab
+                : heartPrefab;
+
+            GameObject heart = Instantiate(
+                prefabToSpawn,
+                spawnPoint.position,
+                spawnPoint.rotation
+            );
+
+            if (InteractFolder != null)
+                heart.transform.SetParent(InteractFolder);
+        }
+    }
+
+
     private void SpawnEnemy(EnemyGroup group) // Spawn enemies
     {
         if (group.spawnPoints.Count == 0) // if there is no spawnpoitns assigned
@@ -101,23 +143,7 @@ public class EnemySpawnManager : MonoBehaviour
         Transform spawnPoint = group.spawnPoints[Random.Range(0, group.spawnPoints.Count)]; // Randomly spawn between the assigned spawnpoints
         GameObject enemy = Instantiate(group.enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        // If it spawns a pick up
-        if (enemy.gameObject.CompareTag("HealthGiver"))
-        {
-            enemy.transform.parent = group.pickUpFolder.transform;
-        }
-
-        if (enemyFolder != null && !enemy.gameObject.CompareTag("HealthGiver"))
-        {
-            enemy.transform.SetParent(enemyFolder);
-        }
-        else if (enemy.gameObject.CompareTag("HealthGiver"))
-        {
-            enemy.transform.SetParent(group.pickUpFolder.transform);
-        }
-
-
-            aliveEnemies++;
+        aliveEnemies++;
 
         EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
         tracker.spawner = this;
