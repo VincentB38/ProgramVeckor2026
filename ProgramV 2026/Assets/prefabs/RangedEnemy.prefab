@@ -139,9 +139,12 @@ MonoBehaviour:
   moveSpeed: 1
   damageAmount: 1
   damageRateSeconds: 1.5
+  bulletSpeed: 2
   attackRange: 20
   jumpHeight: 40
   yOffset: 1.2
+  pointLoss: 15
+  bulletPrefab: {fileID: 6899369469752283576, guid: cf2933fc13d5c5c439be1a335bf2e00a, type: 3}
   flooringHolder: {fileID: 0}
   jumpCooldown: 0.5
   jumpTimer: 0
