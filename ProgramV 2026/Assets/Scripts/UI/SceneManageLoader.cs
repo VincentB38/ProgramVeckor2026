@@ -40,6 +40,8 @@ public class SceneManageLoader : MonoBehaviour
 
         string Ending = PlayerPrefs.GetString("Ending");
 
+        if (EndingText != null) // Prevent errors
+        {
         if (Ending == "False")
         {
             EndingText.text = "You Died";
@@ -49,6 +51,7 @@ public class SceneManageLoader : MonoBehaviour
         {
             EndingText.text = "You Won";
             EndingText.color = Color.green;
+        }
         }
     }
 
