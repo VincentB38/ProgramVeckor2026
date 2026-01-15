@@ -39,17 +39,18 @@ public class SceneManageLoader : MonoBehaviour
         }
 
         string Ending = PlayerPrefs.GetString("Ending");
+        int Score = PlayerPrefs.GetInt("CurrentScore");
 
         if (EndingText != null) // Prevent errors
         {
         if (Ending == "False")
         {
-            EndingText.text = "You Died";
+            EndingText.text = "You Died [Score: " + Score + "]";
             EndingText.color = Color.red;
         } 
         else
         {
-            EndingText.text = "You Won";
+            EndingText.text = "You Won [Score: " + Score + "]";
             EndingText.color = Color.green;
         }
         }

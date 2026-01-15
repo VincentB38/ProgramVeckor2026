@@ -35,7 +35,6 @@ public class HighScoreUIManager : MonoBehaviour
     }
     public void SubmitScore(int PlayerScore, string PName)
     {
-        print("PLayer Saved");
         if (PName == null) return;
 
         string playerName = PName;
