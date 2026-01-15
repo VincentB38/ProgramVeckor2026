@@ -9,6 +9,7 @@ public class SceneManageLoader : MonoBehaviour
     static public bool gameIsPaused;
     private HighScoreUIManager hSM;
     public TMP_InputField nameInputField;
+    public TextMeshProUGUI SelectedText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +37,14 @@ public class SceneManageLoader : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+
+        if (string.IsNullOrEmpty(nameInputField.text))
+        {
+            SelectedText.text = nameInputField.text;
+        } else
+        {
+            SelectedText.text = "No Name Selected";
+        }
     }
 
     // Opens "TestScene"
@@ -46,16 +55,19 @@ public class SceneManageLoader : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        SceneManager.LoadScene(1);
-
-
         int PlayerScore = PlayerPrefs.GetInt("CurrentScore");
         string PlayerName = nameInputField.text;
+
+        if (string.IsNullOrEmpty(PlayerName))
+            PlayerName = "Player";
+
         hSM.SubmitScore(PlayerScore, PlayerName);
 
         nameInputField.text = "";
-        PlayerPrefs.SetInt("CurrentScore", 0); // Reset the score
+        PlayerPrefs.SetInt("CurrentScore", 0);
         PlayerPrefs.Save();
+
+        SceneManager.LoadScene(1);
     }
 
     public void LeaveGame()

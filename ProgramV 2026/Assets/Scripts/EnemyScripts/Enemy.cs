@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
     public virtual void Attack(PlayerHandler player)
     {
         player.ChangeHealth(-damage); // Enemy attacks
-        player.UpdateScore(-100); // Lose 100 score
+        player.UpdateScore(-25); // Lose 25 score
     }
 
     IEnumerator WaitToAttack()
