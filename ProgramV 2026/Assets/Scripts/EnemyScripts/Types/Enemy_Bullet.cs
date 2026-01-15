@@ -11,6 +11,9 @@ public class Enemy_Bullet : MonoBehaviour
     private Vector2 moveDirection;
     private Rigidbody2D rb;
 
+    // LayerMask for enemies (optional, ensures raycast only hits enemies)
+    [SerializeField] private LayerMask playerLayer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +36,18 @@ public class Enemy_Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector2 currentPos = rb.position;
+        Vector2 nextPos = currentPos + moveDirection * speed * Time.fixedDeltaTime;
+
+        // Raycast to prevent tunneling through enemies
+        RaycastHit2D hit = Physics2D.Linecast(currentPos, nextPos, playerLayer);
+        if (hit.collider != null)
+        {
+            hit.collider.GetComponent<PlayerHandler>()?.ChangeHealth(-damage);
+            Destroy(gameObject);
+            return;
+        }
+
         rb.linearVelocity = moveDirection.normalized * speed;
     }
 
