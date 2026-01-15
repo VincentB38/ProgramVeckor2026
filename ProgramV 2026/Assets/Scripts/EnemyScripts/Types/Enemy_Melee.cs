@@ -114,7 +114,7 @@ public class Enemy_Melee : Enemy
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 6) // These are for the layer triggers to tell the enemy when it is time to jump
         {

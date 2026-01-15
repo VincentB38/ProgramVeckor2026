@@ -9,7 +9,7 @@ public class SceneManageLoader : MonoBehaviour
     static public bool gameIsPaused;
     private HighScoreUIManager hSM;
     public TMP_InputField nameInputField;
-    public TextMeshProUGUI SelectedText;
+    public TextMeshProUGUI EndingText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +17,7 @@ public class SceneManageLoader : MonoBehaviour
         hSM = FindAnyObjectByType<HighScoreUIManager>();
 
         if (nameInputField != null)
-            nameInputField.placeholder.GetComponent<TMP_Text>().text = "Enter Name...";
+            nameInputField.placeholder.GetComponent<TMP_Text>().text = "Write ur User [Press Enter to Confirm]";
     }
 
     // Update is called once per frame
@@ -38,12 +38,17 @@ public class SceneManageLoader : MonoBehaviour
             }
         }
 
-        if (string.IsNullOrEmpty(nameInputField.text))
+        string Ending = PlayerPrefs.GetString("Ending");
+
+        if (Ending == "False")
         {
-            SelectedText.text = nameInputField.text;
-        } else
+            EndingText.text = "You Died";
+            EndingText.color = Color.red;
+        } 
+        else
         {
-            SelectedText.text = "No Name Selected";
+            EndingText.text = "You Won";
+            EndingText.color = Color.green;
         }
     }
 
