@@ -2210,17 +2210,29 @@ MonoBehaviour:
       spawnPoints:
       - {fileID: 1241901051}
       - {fileID: 1216619074}
+      maxAliveEnemies: 3
+    - enemyPrefab: {fileID: 5506892514307656100}
+      quantity: 5
+      spawnInterval: 1
+      spawnPoints:
+      - {fileID: 1241901051}
+      - {fileID: 1216619074}
+      - {fileID: 1161421352}
+      - {fileID: 1163526230}
+      - {fileID: 1702690805}
+      - {fileID: 1336539469}
+      - {fileID: 222667801}
       maxAliveEnemies: 5
     - enemyPrefab: {fileID: 395043321373711494, guid: 2a63037be671a9a4fa07beb0a142ff38, type: 3}
-      quantity: 20
+      quantity: 15
       spawnInterval: 5
       spawnPoints:
       - {fileID: 1241901051}
       - {fileID: 1216619074}
       - {fileID: 1702690805}
-      maxAliveEnemies: 10
+      maxAliveEnemies: 5
     - enemyPrefab: {fileID: 395043321373711494, guid: 2a63037be671a9a4fa07beb0a142ff38, type: 3}
-      quantity: 25
+      quantity: 20
       spawnInterval: 5
       spawnPoints:
       - {fileID: 1241901051}
@@ -2230,7 +2242,7 @@ MonoBehaviour:
       - {fileID: 1702690805}
       - {fileID: 1336539469}
       - {fileID: 222667801}
-      maxAliveEnemies: 20
+      maxAliveEnemies: 10
   waveText: {fileID: 1433068736}
   enemyFolder: {fileID: 186941907}
 --- !u!4 &186941907
@@ -3162,7 +3174,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.7962963, y: 0.8888889}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3244,7 +3256,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5fe587bb005ad384bb53ea11418c530e, type: 3}
+  m_Sprite: {fileID: -1590545718374908431, guid: 762fe8721e967b046bcff24698737183, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6026,7 +6038,7 @@ GameObject:
   - component: {fileID: 1176629646}
   m_Layer: 0
   m_Name: GroundFloor
-  m_TagString: Untagged
+  m_TagString: OnGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7891,7 +7903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Melee
   playerTransform: {fileID: 477957205}
-  moveSpeed: 5
+  moveSpeed: 3
   damageAmount: 1
   damageRateSeconds: 5
   attackRange: 1.5
@@ -14953,7 +14965,7 @@ GameObject:
   - component: {fileID: 5714826905659439852}
   - component: {fileID: 5714826905659439853}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: HeartPickUp
   m_TagString: HealthGiver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

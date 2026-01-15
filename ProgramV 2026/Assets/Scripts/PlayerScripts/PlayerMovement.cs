@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject FlooringHolder; // Store all the jump things
 
     Rigidbody2D Player;
+    Animator animator;
 
     private bool isGrounded;
 
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Player = GetComponent<Rigidbody2D>();
 
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,6 +39,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float direction = 0f;
 
+        if (Player.linearVelocityX != 0)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }
 
         if (Keyboard.current.dKey.isPressed)
         {
@@ -53,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Keyboard.current.aKey.isPressed)
         {
             direction = -1f; // vänster
-            GunPart.transform.position = new Vector2(transform.position.x *1.11f, transform.position.y);
+            GunPart.transform.position = new Vector2(transform.position.x * 1.11f, transform.position.y);
             transform.eulerAngles = new Vector3(
             transform.eulerAngles.x,
             180f,
