@@ -426,63 +426,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2145778258}
   m_SourcePrefab: {fileID: 100100000, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
---- !u!1001 &504752968
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.86085
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.56692
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882431534562796783, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-      propertyPath: m_Name
-      value: HeartUi
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: da2a325f4d914f3479124788d1039db5, type: 3}
 --- !u!1 &517342378
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,11 +590,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a54c33f8f6ea2841acd2bf77de5118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawnManager
-  enemyPrefab: {fileID: 2145778252}
-  spawnInterval: 2
-  maxTotalSpawns: 20
-  maxAliveEnemies: 5
+  waves: []
+  waveText: {fileID: 0}
   enemyFolder: {fileID: 707855612}
+  wavePopDuration: 0.5
+  waveDisplayDuration: 1
+  heartPrefab: {fileID: 0}
+  goldenHeartPrefab: {fileID: 0}
+  goldenHeartChance: 0.1
+  heartSpawnPoints: []
+  InteractFolder: {fileID: 0}
+  waveShipPrefab: {fileID: 0}
+  minHeartsPerWave: 1
+  maxHeartsPerWave: 3
 --- !u!4 &707855612
 Transform:
   m_ObjectHideFlags: 0
@@ -1241,11 +1192,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!4 &1983248271 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2208748742817550681, guid: da2a325f4d914f3479124788d1039db5, type: 3}
-  m_PrefabInstance: {fileID: 504752968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1990154512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,7 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
   Health: 3
-  HeartContainer: {fileID: 1983248271}
+  HeartContainer: {fileID: 0}
   HeartPreFab: {fileID: 3196466387327115833, guid: e4f382e0b20b77945a36e04f9beeacde, type: 3}
   PlayerScore: {fileID: 1990154514}
 --- !u!1 &2071323684
@@ -1691,6 +1637,7 @@ MonoBehaviour:
   flooringHolder: {fileID: 1181209537}
   jumpCooldown: 0.5
   jumpTimer: 2
+  PointDamageLoss: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1702,5 +1649,4 @@ SceneRoots:
   - {fileID: 2034527943}
   - {fileID: 467769638}
   - {fileID: 669091511}
-  - {fileID: 504752968}
   - {fileID: 1643198990}
