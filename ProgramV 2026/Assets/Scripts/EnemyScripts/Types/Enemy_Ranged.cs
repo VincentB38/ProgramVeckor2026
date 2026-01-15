@@ -68,9 +68,7 @@ public class Enemy_Ranged : Enemy
         // Shoots bullets towards the player
 
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        Rigidbody2D rigidBodyBullet = bullet.GetComponent<Rigidbody2D>();
-
-        rigidBodyBullet.linearVelocity = (playerTransform.position - transform.position).normalized * bulletSpeed;
+        bullet.GetComponent<Enemy_Bullet>().SetValues(playerTransform.position - transform.position, bulletSpeed, damageAmount);
     }
 
     void CalculateCooldown()
