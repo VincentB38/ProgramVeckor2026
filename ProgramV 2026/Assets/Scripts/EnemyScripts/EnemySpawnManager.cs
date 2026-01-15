@@ -43,6 +43,7 @@ public class EnemySpawnManager : MonoBehaviour
     public float goldenHeartChance = 0.10f; // 0.1 = 10%, 1 = 100%
     public List<Transform> heartSpawnPoints = new List<Transform>();
     public Transform InteractFolder;
+    public GameObject waveShipPrefab;
 
     public int minHeartsPerWave = 1;
     public int maxHeartsPerWave = 3;
@@ -132,8 +133,11 @@ public class EnemySpawnManager : MonoBehaviour
         while (aliveEnemies > 0)
             yield return null;
 
-        // Spawn hearts after wave
-        SpawnHeartsAfterWave();
+        if (waveShipPrefab != null)
+        {
+            GameObject ship = Instantiate(waveShipPrefab);
+        }
+        SpawnHeartsAfterWave(); // Spawn hearts after wave
 
         currentWaveIndex++;
 
