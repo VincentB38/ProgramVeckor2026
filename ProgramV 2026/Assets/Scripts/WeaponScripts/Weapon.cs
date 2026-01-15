@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Weapon : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class Weapon : MonoBehaviour
     [Header("References")]
     public Transform MuzzlePos;
     [SerializeField] private Transform bulletsParent;
+    private Vector2 startMuzzlePos;
+    
+
 
     private int currentAmmo;
     private float nextFireTime;
@@ -27,6 +31,7 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         ReloadText = GameObject.Find("Canvas").GetComponentInChildren<TextMeshProUGUI>();
+        startMuzzlePos = MuzzlePos.localPosition;
     }
 
     private void Update()
@@ -38,6 +43,8 @@ public class Weapon : MonoBehaviour
         {
             ReloadText.text = "";
         }
+
+        MuzzlePos.localPosition = startMuzzlePos;
     }
 
     private void OnEnable()

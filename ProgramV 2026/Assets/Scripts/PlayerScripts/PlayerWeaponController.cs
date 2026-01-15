@@ -5,12 +5,17 @@ using UnityEngine.InputSystem;
 public class PlayerWeaponController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform weaponRoot; // Player -> WeaponRoot
+    [SerializeField] private Transform weaponRoot;// Player -> WeaponRoot
+    private Transform playerTransform;
+    private bool isWalking;
+    public float yOffset;
 
     [Header("Weapon Slots (max 2)")]
     public GameObject weaponSlot1Prefab;
     public GameObject weaponSlot2Prefab;
     public TextMeshProUGUI WeaponEquipped;
+
+    private Vector3 weaponRootPos;
 
     private Weapon[] weapons = new Weapon[2];
     private int activeWeaponIndex = 0;
@@ -19,6 +24,10 @@ public class PlayerWeaponController : MonoBehaviour
     {
         EquipWeapons();
         SwitchWeapon(0);
+
+        weaponRootPos = weaponRoot.localPosition;
+
+        playerTransform = gameObject.transform;
     }
 
     public void ChangeWeapon(GameObject newWeaponPrefab)
@@ -68,6 +77,19 @@ public class PlayerWeaponController : MonoBehaviour
     {
         HandleSwitchInput();
         HandleShooting();
+
+        weaponRoot.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+
+        isWalking = playerTransform.GetComponent<Animator>().GetBool("IsWalking");
+        // When walking, pull the gun down to follow animation
+        if (isWalking)
+        {
+            weaponRoot.transform.localPosition = new Vector3(weaponRootPos.x, -yOffset, weaponRootPos.z);
+        }
+        else
+        {
+            weaponRoot.transform.localPosition = weaponRootPos;
+        }
     }
 
     private void HandleShooting()
@@ -98,7 +120,8 @@ public class PlayerWeaponController : MonoBehaviour
         if (weaponSlot2Prefab != null)
             weapons[1] = SpawnWeapon(weaponSlot2Prefab);
     }
-
+    
+    // Spawns Weapon on Player
     private Weapon SpawnWeapon(GameObject weaponPrefab)
     {
         GameObject weaponObj = Instantiate(weaponPrefab, weaponRoot);
@@ -109,6 +132,7 @@ public class PlayerWeaponController : MonoBehaviour
         return weaponObj.GetComponent<Weapon>();
     }
 
+    // Switches Weapons
     private void SwitchWeapon(int index)
     {
         if (index < 0 || index >= weapons.Length) return;
