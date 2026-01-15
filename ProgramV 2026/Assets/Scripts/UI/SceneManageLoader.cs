@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 public class SceneManageLoader : MonoBehaviour
 {
     static public bool gameIsPaused;
+    private HighScoreUIManager hSM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        hSM = FindAnyObjectByType<HighScoreUIManager>();
     }
 
     // Update is called once per frame
@@ -34,7 +35,10 @@ public class SceneManageLoader : MonoBehaviour
     // Opens "TestScene"
     public void OpenLevel1()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+
+
+        hSM.SubmitScore(2);
     }
 
     public void OpenMainMenu()
