@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHandler : MonoBehaviour
@@ -43,14 +44,18 @@ public class PlayerHandler : MonoBehaviour
     {
         Score += amount;
 
-        int CurrentScore = PlayerPrefs.GetInt("CurrentScore");
+            int CurrentScore = PlayerPrefs.GetInt("CurrentScore");
             PlayerPrefs.SetInt("CurrentScore", Score); // Save the socre
             PlayerPrefs.Save();
     }
 
     public void GameOver()
     {
-        highScoreManager.SubmitScore(Score);
+        int CurrentScore = PlayerPrefs.GetInt("CurrentScore");
+        PlayerPrefs.SetInt("CurrentScore", Score); // Save the socre
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene(2);
     }
 
     void CreateHearts()
