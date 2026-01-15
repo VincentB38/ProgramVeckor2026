@@ -68,11 +68,11 @@ public class PlayerHandler : MonoBehaviour
         for (int i = 0; i < Health; i++) // Creates hearts based of health
         {
             GameObject heartObj = Instantiate(HeartPreFab, HeartContainer);
-            heartObj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+           // heartObj.transform.localScale = new Vector3(100f, 100f, 100f);
             heartObj.name = "Heart" + i;
 
             RectTransform rt = heartObj.GetComponent<RectTransform>(); // Place the hearts
-            rt.anchoredPosition = new Vector2(-365 + (43 *i), 180); // Start Position, increase with 40 on x axis for every new heart
+            rt.anchoredPosition = new Vector2(-268 + (40 *i), 128); // Start Position, increase with 40 on x axis for every new heart
 
             RawImage heartImage = heartObj.GetComponent<RawImage>(); // add into the list
 

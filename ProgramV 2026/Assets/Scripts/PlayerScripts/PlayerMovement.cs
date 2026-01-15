@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
         {
             direction = 1f; // höger
-            GunPart.transform.position = new Vector2(transform.position.x * 0.89f, transform.position.y);
+            //GunPart.transform.position = new Vector2(transform.position.x * 0.89f, transform.position.y);
 
             transform.eulerAngles = new Vector3(
             transform.eulerAngles.x,
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Keyboard.current.aKey.isPressed)
         {
             direction = -1f; // vänster
-            GunPart.transform.position = new Vector2(transform.position.x * 1.11f, transform.position.y);
+            //GunPart.transform.position = new Vector2(transform.position.x * 1.11f, transform.position.y);
             transform.eulerAngles = new Vector3(
             transform.eulerAngles.x,
             180f,
