@@ -72,7 +72,7 @@ public class PlayerHandler : MonoBehaviour
             heartObj.name = "Heart" + i;
 
             RectTransform rt = heartObj.GetComponent<RectTransform>(); // Place the hearts
-            rt.anchoredPosition = new Vector2(-268 + (40 *i), 128); // Start Position, increase with 40 on x axis for every new heart
+            rt.anchoredPosition = new Vector2(-368 + (42 *i), 177); // Start Position, increase with 40 on x axis for every new heart
 
             RawImage heartImage = heartObj.GetComponent<RawImage>(); // add into the list
 
