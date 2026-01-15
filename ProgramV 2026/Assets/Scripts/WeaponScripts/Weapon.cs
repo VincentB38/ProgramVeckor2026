@@ -30,19 +30,13 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        ReloadText = GameObject.Find("Canvas").GetComponentInChildren<TextMeshProUGUI>();
+        ReloadText = UIProvider.Instance.reloadText;
         startMuzzlePos = MuzzlePos.localPosition;
     }
 
     private void Update()
     {
-        if (isReloading == true)
-        {
-            ReloadText.text = "(Reloading)";
-        } else
-        {
-            ReloadText.text = "";
-        }
+       
 
         MuzzlePos.localPosition = startMuzzlePos;
     }
@@ -104,9 +98,11 @@ public class Weapon : MonoBehaviour
     private IEnumerator Reload()
     {
         isReloading = true;
+        ReloadText.text = "(Reloading)";
         yield return new WaitForSeconds(reloadRate);
         currentAmmo = ammoMagazine;
         isReloading = false;
+        ReloadText.text = "";
     }
 
     #region Getters (optional for UI)
