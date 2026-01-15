@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemToEquip
   WeaponPreFab: {fileID: 7135761585660305779, guid: 020d3ba8d02e77f4193e1cacdcc94960, type: 3}
-  PointGain: 20
+  PointGain: 100
   floatAmplitude: 0.2
   floatFrequency: 1
   HeartGain: 0
