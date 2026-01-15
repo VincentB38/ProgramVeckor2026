@@ -29,6 +29,17 @@ public class Weapon : MonoBehaviour
         ReloadText = GameObject.Find("Canvas").GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    private void Update()
+    {
+        if (isReloading == true)
+        {
+            ReloadText.text = "(Reloading)";
+        } else
+        {
+            ReloadText.text = "";
+        }
+    }
+
     private void OnEnable()
     {
         currentAmmo = ammoMagazine;
@@ -85,12 +96,10 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        ReloadText.text = "(Reloading)";
         isReloading = true;
         yield return new WaitForSeconds(reloadRate);
         currentAmmo = ammoMagazine;
         isReloading = false;
-        ReloadText.text = "";
     }
 
     #region Getters (optional for UI)

@@ -13,10 +13,13 @@ public class PlayerHandler : MonoBehaviour
     public GameObject HeartPreFab;
     public TextMeshProUGUI PlayerScore;
 
+    private HighScoreUIManager highScoreManager;
+
     private List<RawImage> Hearts = new List<RawImage>();
     void Start()
     {
         CreateHearts(); // Creates the hearts based of hp
+        highScoreManager = FindAnyObjectByType<HighScoreUIManager>();
     }
 
     void Update()
@@ -29,11 +32,25 @@ public class PlayerHandler : MonoBehaviour
         Health += amount;
 
         CreateHearts(); // Recalculate the visual hearts
+
+        if (Health < 1) // Lose Logic
+        {
+            GameOver();
+        }
     }
 
     public void UpdateScore(int amount) // Update score
     {
         Score += amount;
+
+        int CurrentScore = PlayerPrefs.GetInt("CurrentScore");
+            PlayerPrefs.SetInt("CurrentScore", Score); // Save the socre
+            PlayerPrefs.Save();
+    }
+
+    public void GameOver()
+    {
+        highScoreManager.SubmitScore(Score);
     }
 
     void CreateHearts()
