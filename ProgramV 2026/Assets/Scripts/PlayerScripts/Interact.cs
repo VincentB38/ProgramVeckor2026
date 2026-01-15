@@ -60,7 +60,7 @@ public class Interact : MonoBehaviour
         if (Item.CompareTag("HealthGiver")) // Gives the player an extra life
         {
             Destroy(Item, 0);
-            gameObject.GetComponent<PlayerHandler>().ChangeHealth(1);
+            gameObject.GetComponent<PlayerHandler>().ChangeHealth(Item.GetComponent<ItemToEquip>().HeartGain);
         } 
         else if (Item.CompareTag("WeaponType")) // weapon function
         {

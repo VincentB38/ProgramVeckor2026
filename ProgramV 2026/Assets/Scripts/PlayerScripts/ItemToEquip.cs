@@ -6,6 +6,7 @@ public class ItemToEquip : MonoBehaviour
     public int PointGain;
     public float floatAmplitude; // How high/low it floats
     public float floatFrequency;   // Speed of floating
+    public int HeartGain;
 
     private Vector3 startPos;
 
