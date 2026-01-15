@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public virtual void Attack(PlayerHandler player)
+    protected virtual void Attack(PlayerHandler player)
     {
         player.ChangeHealth(-damage); // Enemy attacks
         player.UpdateScore(-25); // Lose 25 score

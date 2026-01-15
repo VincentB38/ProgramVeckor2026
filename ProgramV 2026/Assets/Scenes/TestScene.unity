@@ -264,6 +264,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+      propertyPath: waves.Array.data[0].groups.Array.data[0].enemyPrefab
+      value: 
+      objectReference: {fileID: 395043321373711494, guid: 6ed1578b576f5d440868c13c75584a84, type: 3}
+    - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[1].enemyPrefab
       value: 
       objectReference: {fileID: 395043321373711494, guid: 2a63037be671a9a4fa07beb0a142ff38, type: 3}
@@ -376,6 +380,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+      propertyPath: waves.Array.data[0].groups.Array.data[0].spawnPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[1].spawnPoints.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -414,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: 'waves.Array.data[0].groups.Array.data[0].spawnPoints.Array.data[0]'
       value: 
-      objectReference: {fileID: 1241901051}
+      objectReference: {fileID: 918454799}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: 'waves.Array.data[0].groups.Array.data[0].spawnPoints.Array.data[1]'
       value: 
@@ -8904,6 +8912,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: flooringHolder
+      value: 
+      objectReference: {fileID: 610596402}
+    - target: {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 477957205}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.9881525
@@ -8954,7 +8970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_TagString
@@ -8973,11 +8989,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 1598529900}
-    - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1598529905}
   m_SourcePrefab: {fileID: 100100000, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
 --- !u!1 &1265023731
 GameObject:
@@ -10290,28 +10303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxHealth: 30
   ScoreGain: 30
---- !u!114 &1598529905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1598529899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3849ff3edc16e34595073349d13ca4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Melee
-  playerTransform: {fileID: 477957205}
-  moveSpeed: 3
-  damageAmount: 1
-  damageRateSeconds: 5
-  attackRange: 1.5
-  jumpHeight: 40
-  yOffset: 1.2
-  flooringHolder: {fileID: 610596402}
-  jumpCooldown: 0.5
-  jumpTimer: 2
 --- !u!1 &1641044160
 GameObject:
   m_ObjectHideFlags: 0

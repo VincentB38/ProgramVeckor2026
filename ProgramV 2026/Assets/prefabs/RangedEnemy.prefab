@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Name
-      value: enemy 1 Variant
+      value: RangedEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Layer
@@ -92,13 +92,17 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 903360439519634946}
+    - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3398476583322146135}
   m_SourcePrefab: {fileID: 100100000, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
 --- !u!1 &395043321373711494 stripped
 GameObject:
@@ -119,3 +123,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxHealth: 30
   ScoreGain: 10
+--- !u!114 &-3398476583322146135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395043321373711494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc0b71411c9c6a44a4e02212e6a2469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Ranged
+  playerTransform: {fileID: 0}
+  moveSpeed: 1
+  damageAmount: 1
+  damageRateSeconds: 1.5
+  attackRange: 20
+  jumpHeight: 40
+  yOffset: 1.2
+  flooringHolder: {fileID: 0}
+  jumpCooldown: 0.5
+  jumpTimer: 0
