@@ -1991,28 +1991,6 @@ MonoBehaviour:
   weaponSlot1Prefab: {fileID: 7135761585660305779, guid: 619ab8d88cd3fc54a9022831b6bd46e2, type: 3}
   weaponSlot2Prefab: {fileID: 0}
   WeaponEquipped: {fileID: 1347388187}
---- !u!114 &1796305623 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8427290998781178350, guid: 7151914ad7e7240499f7afef60af59bf, type: 3}
-  m_PrefabInstance: {fileID: 6908825176894820525}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &1993598634 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7206300024689168988, guid: 7151914ad7e7240499f7afef60af59bf, type: 3}
-  m_PrefabInstance: {fileID: 6908825176894820525}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &2016519642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,13 +2480,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4531299912929030075, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531299912929030075, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: nameInputField
       value: 
-      objectReference: {fileID: 1993598634}
+      objectReference: {fileID: 0}
     - target: {fileID: 4531299912929030075, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: leaderboardText
       value: 
-      objectReference: {fileID: 1796305623}
+      objectReference: {fileID: 0}
     - target: {fileID: 6596511861583844248, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2667,7 +2649,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1557666528689537562, guid: 7151914ad7e7240499f7afef60af59bf, type: 3}
+    - {fileID: 8573202913965872822, guid: 7151914ad7e7240499f7afef60af59bf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7151914ad7e7240499f7afef60af59bf, type: 3}

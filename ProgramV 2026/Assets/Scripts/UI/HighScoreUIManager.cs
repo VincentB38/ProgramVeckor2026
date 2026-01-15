@@ -19,9 +19,8 @@ public class HighScoreUIManager : MonoBehaviour
 {
     [Header("UI References")]
     public TextMeshProUGUI leaderboardText;   // Display leaderboard
-    public TMP_InputField nameInputField;     // Player types their name
 
-    private const string LeaderboardKey = "LeaderboardTop10";
+    private const string LeaderboardKey = "LeaderboardTop10"; // Change to reset Ldb Data
     private const int MaxScores = 10;
     private Leaderboard leaderboard;
 
@@ -33,14 +32,12 @@ public class HighScoreUIManager : MonoBehaviour
         UpdateUI();
 
         // Optional: placeholder text
-        if (nameInputField != null)
-            nameInputField.placeholder.GetComponent<TMP_Text>().text = "Enter Name...";
     }
-    public void SubmitScore(int PlayerScore)
+    public void SubmitScore(int PlayerScore, string PName)
     {
-        if (nameInputField == null) return;
+        if (PName == null) return;
 
-        string playerName = nameInputField.text;
+        string playerName = PName;
 
         if (string.IsNullOrEmpty(playerName))
             playerName = "TestPlayer"; // Defualt name if no user chosen
@@ -62,8 +59,6 @@ public class HighScoreUIManager : MonoBehaviour
         SaveLeaderboard();
         UpdateUI();
 
-        // Clear input field for next use
-        nameInputField.text = "";
     }
     private void UpdateUI() // Update the ui
     {
