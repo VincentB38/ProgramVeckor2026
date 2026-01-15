@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: e85478166c6c89e42a6425c5d8d6244b
+guid: c73c1f4313e95474ea7ac83cd077cdda
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6722166885092852416
-    second: "detalj f\xF6r tilesets_0"
+      213: -8032827987697526169
+    second: stone tileset_0
+  - first:
+      213: 6096860983747978587
+    second: stone tileset_1
+  - first:
+      213: -1917585010501187850
+    second: stone tileset_2
+  - first:
+      213: 4762115886616049162
+    second: stone tileset_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "detalj f\xF6r tilesets_0"
+      name: stone tileset_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c28ada9a2fe94d50800000000000000
-      internalID: 6722166885092852416
+      spriteID: 76a19734189a58090800000000000000
+      internalID: -8032827987697526169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "detalj f\xF6r tilesets_1"
+      name: stone tileset_1
       rect:
         serializedVersion: 2
         x: 16
@@ -135,16 +144,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9679b38500682674387a06bf8f56cd87
-      internalID: 1076432466
+      spriteID: b55ac3d13c66c9450800000000000000
+      internalID: 6096860983747978587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "detalj f\xF6r tilesets_2"
+      name: stone tileset_2
       rect:
         serializedVersion: 2
         x: 0
@@ -157,16 +166,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0390792e7772a454d9bf44a950ce20a1
-      internalID: 1123401099
+      spriteID: 6f6867eb79e5365e0800000000000000
+      internalID: -1917585010501187850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "detalj f\xF6r tilesets_3"
+      name: stone tileset_3
       rect:
         serializedVersion: 2
         x: 16
@@ -179,10 +188,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e309f55548e92a74e9ffb63ae3f38c64
-      internalID: 757984106
+      spriteID: a067ef80b2f661240800000000000000
+      internalID: 4762115886616049162
       vertices: []
       indices: 
       edges: []
@@ -191,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9a6d4318189808e41ba32e5e59b17e31
+    spriteID: 49b0ff558904f8c43861f9dc3338f370
     internalID: 0
     vertices: []
     indices: 
@@ -203,10 +212,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      "detalj f\xF6r tilesets_0": 6722166885092852416
-      "detalj f\xF6r tilesets_1": 1076432466
-      "detalj f\xF6r tilesets_2": 1123401099
-      "detalj f\xF6r tilesets_3": 757984106
+      stone tileset_0: -8032827987697526169
+      stone tileset_1: 6096860983747978587
+      stone tileset_2: -1917585010501187850
+      stone tileset_3: 4762115886616049162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
