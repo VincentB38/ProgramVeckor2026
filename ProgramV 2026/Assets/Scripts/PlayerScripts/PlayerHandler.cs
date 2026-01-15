@@ -33,7 +33,7 @@ public class PlayerHandler : MonoBehaviour
 
         if (Health < 1) // Lose Logic
         {
-            GameOver();
+            EndGame("False"); // Lose
         }
     }
 
@@ -45,10 +45,10 @@ public class PlayerHandler : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void GameOver()
+    public void EndGame(string Ending)
     {
         PlayerPrefs.SetInt("CurrentScore", Score); // Save the socre
-        PlayerPrefs.SetString("Ending", "False");
+        PlayerPrefs.SetString("Ending", Ending); // Lose
 
         PlayerPrefs.Save();
 

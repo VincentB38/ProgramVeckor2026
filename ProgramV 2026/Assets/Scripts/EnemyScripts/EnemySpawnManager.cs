@@ -31,9 +31,14 @@ public class EnemySpawnManager : MonoBehaviour
     private int currentWaveIndex = 0;
     private int aliveEnemies = 0;
 
+    public float wavePopDuration = 0.5f;   // How long it grows/shrinks
+    public float waveDisplayDuration = 1f; // How long it stays on full size
+
     [Header("Heart Spawn Settings")]
     public GameObject heartPrefab;
     public GameObject goldenHeartPrefab;
+
+    private GameObject Player;
 
     public float goldenHeartChance = 0.10f; // 0.1 = 10%, 1 = 100%
     public List<Transform> heartSpawnPoints = new List<Transform>();
@@ -44,62 +49,106 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Start()
     {
+
+        waveText.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        waveText.rectTransform.localScale = Vector3.zero; // start invisible
+
+        Player = GameObject.Find("Player");
+
         if (waves.Count > 0)
         {
-            UpdateWaveText(); // Updates wave Text
-            StartCoroutine(RunWave(waves[currentWaveIndex])); // starts the wave
+            StartCoroutine(RunWave(waves[0]));
         }
-        else // If no waves were added
+        else
         {
             Debug.LogWarning("No waves configured!");
         }
     }
 
-    private void UpdateWaveText() // Update wave text
+    private IEnumerator ShowWaveText(string text)
     {
-        if (waveText != null)
+        if (waveText == null)
+            yield break;
+
+        waveText.gameObject.SetActive(true);
+        waveText.text = text;
+
+        Vector3 startScale = Vector3.zero;
+        Vector3 fullScale = Vector3.one;
+        waveText.transform.localScale = startScale;
+
+        // Grow
+        float t = 0f;
+        while (t < wavePopDuration)
         {
-            waveText.text = $"Wave {currentWaveIndex + 1}: {waves[currentWaveIndex].waveName}";
+            t += Time.deltaTime;
+            float scale = Mathf.SmoothStep(0f, 1f, t / wavePopDuration);
+            waveText.transform.localScale = fullScale * scale;
+            yield return null;
         }
+        waveText.transform.localScale = fullScale;
+
+        // Hold full size
+        yield return new WaitForSeconds(waveDisplayDuration);
+
+        // Shrink
+        t = 0f;
+        while (t < wavePopDuration)
+        {
+            t += Time.deltaTime;
+            float scale = Mathf.SmoothStep(1f, 0f, t / wavePopDuration);
+            waveText.transform.localScale = fullScale * scale;
+            yield return null;
+        }
+
+        waveText.gameObject.SetActive(false);
     }
 
-    private IEnumerator RunWave(EnemyWave wave) // Starting the wave
+
+    private IEnumerator RunWave(EnemyWave wave)
     {
+        yield return StartCoroutine(ShowWaveText($"Wave {currentWaveIndex + 1}: {wave.waveName}"));
+
+        // 1s delay before enemies spawn
+        yield return new WaitForSeconds(1f);
+
         Debug.Log($"Starting Wave: {wave.waveName}");
 
-        UpdateWaveText();
-
-        foreach (var group in wave.groups) // Loopthrough the group lists that are inside of the wave
+        foreach (var group in wave.groups) // Loop through the groups in the waves
         {
             int spawnedInGroup = 0;
-
             while (spawnedInGroup < group.quantity)
             {
-                if (aliveEnemies < group.maxAliveEnemies) // Ensure that it doesn't make more enemies than max
+                if (aliveEnemies < group.maxAliveEnemies) // if enemies are less than max then spawn
                 {
-                    SpawnEnemy(group); // Spawn enemy
+                    SpawnEnemy(group);
                     spawnedInGroup++;
                 }
-
-                yield return new WaitForSeconds(group.spawnInterval); // Wait between each spawn
+                yield return new WaitForSeconds(group.spawnInterval);
             }
         }
 
-        // Wait until all enemies from this wave are dead
+        // Wait until all enemies die
         while (aliveEnemies > 0)
             yield return null;
-        SpawnHeartsAfterWave(); // Once enemies are less than 0 this will run
+
+        // Spawn hearts after wave
+        SpawnHeartsAfterWave();
+
         currentWaveIndex++;
 
-        if (currentWaveIndex < waves.Count) // continue if more waves exist
-            StartCoroutine(RunWave(waves[currentWaveIndex]));
-        else
-        {
-            Debug.Log("All waves completed!");
-            if (waveText != null)
-                waveText.text = "All waves completed!";
-        }
+        if (currentWaveIndex < waves.Count)
+            yield return StartCoroutine(RunWave(waves[currentWaveIndex]));
+        else // If u beat the game
+            yield return StartCoroutine(ShowWaveText("All waves completed!"));
+
+        yield return new WaitForSeconds(2f);
+
+        Player.GetComponent<PlayerHandler>().EndGame("True"); // win
     }
+
+
+
 
     private void SpawnHeartsAfterWave()
     {
