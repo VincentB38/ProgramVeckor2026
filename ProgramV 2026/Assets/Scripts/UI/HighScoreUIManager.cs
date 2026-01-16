@@ -1,6 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine.InputSystem;
 
 [System.Serializable]
 public class PlayerScoreEntry
@@ -20,7 +22,7 @@ public class HighScoreUIManager : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI leaderboardText;   // Display leaderboard
 
-    private const string LeaderboardKey = "LeaderboardTop10"; // Change to reset Ldb Data
+    private const string LeaderboardKey = "LeaderboardTopTest10"; // Change to reset Ldb Data
     private const int MaxScores = 10;
     private Leaderboard leaderboard;
 
@@ -32,6 +34,14 @@ public class HighScoreUIManager : MonoBehaviour
         UpdateUI();
 
         // Optional: placeholder text
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            ResetLeaderboard();
+        }
     }
     public void SubmitScore(int PlayerScore, string PName)
     {
