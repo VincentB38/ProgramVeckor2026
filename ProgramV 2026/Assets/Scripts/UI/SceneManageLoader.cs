@@ -23,38 +23,41 @@ public class SceneManageLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.pKey.isPressed)
+        if (Keyboard.current.pKey.wasPressedThisFrame)
         {
+            gameIsPaused = !gameIsPaused; // Toggle pause state
+
             if (gameIsPaused)
             {
                 Time.timeScale = 0f;
-                // Add pause menu
+                // Show pause menu here
             }
-
-            if (!gameIsPaused)
+            else
             {
-                // Hide pause menu
                 Time.timeScale = 1f;
+                // Hide pause menu here
             }
         }
 
+        // Update ending text
         string Ending = PlayerPrefs.GetString("Ending");
         int Score = PlayerPrefs.GetInt("CurrentScore");
 
-        if (EndingText != null) // Prevent errors
+        if (EndingText != null)
         {
-        if (Ending == "False")
-        {
-            EndingText.text = "You Died [Score: " + Score + "]";
-            EndingText.color = Color.red;
-        } 
-        else
-        {
-            EndingText.text = "You Won [Score: " + Score + "]";
-            EndingText.color = Color.green;
-        }
+            if (Ending == "False")
+            {
+                EndingText.text = "You Died [Score: " + Score + "]";
+                EndingText.color = Color.red;
+            }
+            else
+            {
+                EndingText.text = "You Won [Score: " + Score + "]";
+                EndingText.color = Color.green;
+            }
         }
     }
+
 
     // Opens "TestScene"
     public void OpenLevel1()
