@@ -1073,7 +1073,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6596511861583844248, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1334640751}
   m_SourcePrefab: {fileID: 100100000, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
 --- !u!1 &26773256
 GameObject:
@@ -10178,6 +10181,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1334640748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6596511861583844248, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+  m_PrefabInstance: {fileID: 22443614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1334640751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334640748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d337b81ebb98c443a8f9cd4f4ae48aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  sounds:
+  - audioName: LaserBullet
+    soundClip: {fileID: 8300000, guid: 05717247a0b413a44aeece76276aac23, type: 3}
+    volume: 1
+  masterVolumeMultiplier: 1
+  audioObjectPrefab: {fileID: 6741740349727776123, guid: e80216498a8069d43bbc01502550e5ab, type: 3}
 --- !u!1 &1335186378
 GameObject:
   m_ObjectHideFlags: 0
