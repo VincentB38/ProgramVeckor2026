@@ -832,6 +832,9 @@ MonoBehaviour:
   - audioName: LaserBullet
     soundClip: {fileID: 8300000, guid: 05717247a0b413a44aeece76276aac23, type: 3}
     volume: 1
+  - audioName: EnemyWave
+    soundClip: {fileID: 8300000, guid: 05717247a0b413a44aeece76276aac23, type: 3}
+    volume: 1
   masterVolumeMultiplier: 1
   audioObjectPrefab: {fileID: 6741740349727776123, guid: e80216498a8069d43bbc01502550e5ab, type: 3}
 --- !u!4 &899314070
@@ -3113,6 +3116,10 @@ PrefabInstance:
       propertyPath: heartPrefab
       value: 
       objectReference: {fileID: 6248538424876521286, guid: 8ecbb3130514fe344b97ab90d0db6961, type: 3}
+    - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 899314069}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: InteractFolder
       value: 

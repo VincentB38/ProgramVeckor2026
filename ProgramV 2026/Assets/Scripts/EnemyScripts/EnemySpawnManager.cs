@@ -48,6 +48,8 @@ public class EnemySpawnManager : MonoBehaviour
     public int minHeartsPerWave = 1;
     public int maxHeartsPerWave = 3;
 
+    public SoundManager soundManager;
+
     private void Start()
     {
 
@@ -55,6 +57,11 @@ public class EnemySpawnManager : MonoBehaviour
         waveText.rectTransform.localScale = Vector3.zero; // start invisible
 
         Player = GameObject.Find("Player");
+
+        if (soundManager == null)
+        {
+            soundManager = GetComponent<SoundManager>();
+        }
 
         if (waves.Count > 0)
         {
@@ -70,6 +77,9 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (waveText == null)
             yield break;
+
+        // Plays wave sound to alert player
+        soundManager.PlaySound(1, Player.transform);
 
         waveText.gameObject.SetActive(true);
         waveText.text = text;

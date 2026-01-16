@@ -25,5 +25,10 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = sounds[audioIndex].soundClip;
         audioSource.volume = sounds[audioIndex].volume * masterVolumeMultiplier;
         audioSource.Play();
+
+        if (!audioSource.isPlaying)
+        {
+            Destroy(soundPrefab);
+        }
     }
 }
