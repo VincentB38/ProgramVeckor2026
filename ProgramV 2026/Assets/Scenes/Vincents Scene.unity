@@ -831,7 +831,7 @@ MonoBehaviour:
   sounds:
   - audioName: LaserBullet
     soundClip: {fileID: 8300000, guid: 05717247a0b413a44aeece76276aac23, type: 3}
-    volume: 1
+    volume: 30
   - audioName: EnemyWave
     soundClip: {fileID: 8300000, guid: 05717247a0b413a44aeece76276aac23, type: 3}
     volume: 1
