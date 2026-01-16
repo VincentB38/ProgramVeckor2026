@@ -79,7 +79,6 @@ public class EnemySpawnManager : MonoBehaviour
             yield break;
 
         // Sound for new wave
-        soundManager?.PlaySound(1, Player.transform);
 
         waveText.gameObject.SetActive(true);
         waveText.text = text;
@@ -98,7 +97,7 @@ public class EnemySpawnManager : MonoBehaviour
             yield return null;
         }
         waveText.transform.localScale = fullScale;
-
+        soundManager?.PlaySound(1, Player.transform);
         // Stay big for a bit
         yield return new WaitForSeconds(waveDisplayDuration);
 
