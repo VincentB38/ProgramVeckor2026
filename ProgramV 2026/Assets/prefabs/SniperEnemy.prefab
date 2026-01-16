@@ -158,8 +158,8 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   moveSpeed: 1
   damageAmount: 2
-  damageRateSeconds: 3.5
-  bulletSpeed: 8.5
+  damageRateSeconds: 3.45
+  bulletSpeed: 9
   attackRange: 20
   jumpHeight: 40
   yOffset: 1.2

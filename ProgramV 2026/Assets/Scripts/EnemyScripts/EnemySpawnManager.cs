@@ -84,7 +84,7 @@ public class EnemySpawnManager : MonoBehaviour
         waveText.text = text;
 
         Vector3 startScale = Vector3.zero;
-        Vector3 fullScale = Vector3.one;
+        Vector3 fullScale = Vector3.one * 1.5f;
         waveText.transform.localScale = startScale;
 
         // Grow
