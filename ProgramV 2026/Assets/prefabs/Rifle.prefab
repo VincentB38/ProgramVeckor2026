@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   damage: 30
-  ammoMagazine: 8
+  ammoMagazine: 12
   fireRate: 0.7
   reloadRate: 1.5
   bulletSpeed: 25

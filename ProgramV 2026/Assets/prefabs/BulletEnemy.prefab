@@ -141,3 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Bullet
   lifeTime: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
