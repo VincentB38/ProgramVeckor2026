@@ -32,25 +32,13 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-      propertyPath: PointDamageLoss
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
-      propertyPath: damageRateSeconds
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2434798038739387853, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Name
-      value: enemy 2 Tank
+      value: SniperEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Layer
@@ -114,23 +102,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462030556061711831, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Color.g
-      value: 0.30181903
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5462030556061711831, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.94670784
       objectReference: {fileID: 0}
     - target: {fileID: 8558699128681871354, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       propertyPath: m_GravityScale
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1434440343674637581, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 903360439519634946}
+    - targetCorrespondingSourceObject: {fileID: 2953433062167470132, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3398476583322146135}
   m_SourcePrefab: {fileID: 100100000, guid: 9b433256cab80d34f8519b4bd7b36f1c, type: 3}
 --- !u!1 &395043321373711494 stripped
 GameObject:
@@ -149,5 +141,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae5ed2c74d09af49b59f41e2d32cbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 60
-  ScoreGain: 25
+  maxHealth: 25
+  ScoreGain: 30
+--- !u!114 &-3398476583322146135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395043321373711494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc0b71411c9c6a44a4e02212e6a2469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Ranged
+  playerTransform: {fileID: 0}
+  moveSpeed: 1
+  damageAmount: 2
+  damageRateSeconds: 3.5
+  bulletSpeed: 9
+  attackRange: 20
+  jumpHeight: 40
+  yOffset: 1.2
+  pointLoss: 35
+  bulletPrefab: {fileID: 6899369469752283576, guid: 96fef3dc66a9161439043fb17fb6d834, type: 3}
+  flooringHolder: {fileID: 0}
+  jumpCooldown: 0.5
+  jumpTimer: 0

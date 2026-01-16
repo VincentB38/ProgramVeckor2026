@@ -501,6 +501,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6596511861583844248, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1883508726}
+    - targetCorrespondingSourceObject: {fileID: 6596511861583844248, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883508728}
   m_SourcePrefab: {fileID: 100100000, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
 --- !u!1 &565396849
 GameObject:
@@ -1481,6 +1484,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneManageLoader
   nameInputField: {fileID: 1507667526}
   EndingText: {fileID: 934561471}
+--- !u!114 &1883508728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883508722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0eec6df37ab0044b79bc408858ff54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HighScoreUIManager
+  leaderboardText: {fileID: 0}
+  currentPlayerScore: 0
 --- !u!1 &1965567378
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,6 +32,11 @@ public class Weapon : MonoBehaviour
     {
         ReloadText = UIProvider.Instance.reloadText;
         startMuzzlePos = MuzzlePos.localPosition;
+
+        if (currentAmmo <= 0)
+        {
+            currentAmmo = ammoMagazine;
+        }
     }
 
     private void Update()
@@ -39,12 +44,20 @@ public class Weapon : MonoBehaviour
        
 
         MuzzlePos.localPosition = startMuzzlePos;
+
+        if (Keyboard.current.rKey.wasPressedThisFrame && currentAmmo < ammoMagazine)
+        {
+            StartCoroutine(Reload());
+        }
     }
 
     private void OnEnable()
     {
-        currentAmmo = ammoMagazine;
+        //currentAmmo = ammoMagazine;
         isReloading = false;
+
+        if (ReloadText == null && UIProvider.Instance != null)
+            ReloadText = UIProvider.Instance.reloadText;
 
         // Auto-find Bullets parent
         if (bulletsParent == null)
@@ -59,7 +72,7 @@ public class Weapon : MonoBehaviour
     {
         if (Time.time < nextFireTime || isReloading) return;
 
-        if (currentAmmo <= 0)
+        if (currentAmmo <= 0 && !isReloading)
         {
             StartCoroutine(Reload());
             return;
@@ -98,11 +111,13 @@ public class Weapon : MonoBehaviour
     private IEnumerator Reload()
     {
         isReloading = true;
-        ReloadText.text = "(Reloading)";
+        if (ReloadText != null)
+            ReloadText.text = "(Reloading)";
         yield return new WaitForSeconds(reloadRate);
         currentAmmo = ammoMagazine;
         isReloading = false;
-        ReloadText.text = "";
+        if (ReloadText != null)
+            ReloadText.text = "";
     }
 
     #region Getters (optional for UI)

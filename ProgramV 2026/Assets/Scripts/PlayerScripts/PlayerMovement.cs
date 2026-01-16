@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D Player;
     Animator animator;
 
-    private bool isGrounded;
+    private bool isGrounded = true;
 
     public float DashSpeed;      // Hur snabb dashen är
     public float DashDuration;  // Under hur lång tid
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             Player.linearVelocity = new Vector2(direction * Speed, Player.linearVelocity.y);
 
             // Hoppa
-            if (Keyboard.current.wKey.wasPressedThisFrame && isGrounded)
+            if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame) && isGrounded)
             {
                 Player.linearVelocity = new Vector2(Player.linearVelocity.x, JumpPower);
             } 

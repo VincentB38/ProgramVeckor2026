@@ -1,11 +1,12 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWeaponController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform weaponRoot;// Player -> WeaponRoot
+    [SerializeField] private Transform weaponRoot;
     private Transform playerTransform;
     private bool isWalking;
     public float yOffset;
@@ -90,6 +91,14 @@ public class PlayerWeaponController : MonoBehaviour
         {
             weaponRoot.transform.localPosition = weaponRootPos;
         }
+
+        Weapon currentWeapon = weapons[activeWeaponIndex];
+        if (currentWeapon != null)
+        {
+            WeaponEquipped.text =
+                $"Slot {activeWeaponIndex + 1}: {currentWeapon.name} " +
+                $"({currentWeapon.GetCurrentAmmo()}/{currentWeapon.GetAmmoMagazine()})";
+        }
     }
 
     private void HandleShooting()
@@ -125,6 +134,7 @@ public class PlayerWeaponController : MonoBehaviour
     private Weapon SpawnWeapon(GameObject weaponPrefab)
     {
         GameObject weaponObj = Instantiate(weaponPrefab, weaponRoot);
+        weaponObj.name = weaponPrefab.name;
         weaponObj.transform.localPosition = Vector3.zero;
         weaponObj.transform.localRotation = Quaternion.identity;
         weaponObj.transform.localScale = Vector3.one;
@@ -147,8 +157,8 @@ public class PlayerWeaponController : MonoBehaviour
         activeWeaponIndex = index;
 
         if (index == 0 && weaponSlot1Prefab != null)
-            WeaponEquipped.text = "Weapon Slot 1: " + weaponSlot1Prefab.name;
+            WeaponEquipped.text = "Slot 1: " + weaponSlot1Prefab.name + "(" + weaponSlot1Prefab.GetComponent<Weapon>().GetCurrentAmmo() + "/" + weaponSlot1Prefab.GetComponent<Weapon>().GetAmmoMagazine() + ")";
         else if (index == 1 && weaponSlot2Prefab != null)
-            WeaponEquipped.text = "Weapon Slot 2: " + weaponSlot2Prefab.name;
+            WeaponEquipped.text = "Slot 2: " + weaponSlot2Prefab.name + "(" + weaponSlot2Prefab.GetComponent<Weapon>().GetCurrentAmmo() + "/" + weaponSlot2Prefab.GetComponent<Weapon>().GetAmmoMagazine() + ")";
     }
 }

@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16eaf2a02343a749bac1550402216c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  damage: 10
+  damage: 9
   ammoMagazine: 30
   fireRate: 0.2
-  reloadRate: 1.2
+  reloadRate: 1
   bulletSpeed: 15
   ReloadText: {fileID: 0}
   bulletPrefab: {fileID: 8321501342719085292, guid: 921db53cd7ee99643a9a5172613ccd02, type: 3}
