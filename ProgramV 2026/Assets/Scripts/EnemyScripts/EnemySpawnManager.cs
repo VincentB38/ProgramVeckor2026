@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro; // Add this for TextMeshPro
+using TMPro;
 
 [System.Serializable]
 public class EnemyGroup // Creates the information for each group

@@ -799,6 +799,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1767991116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &899314068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899314070}
+  - component: {fileID: 899314069}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899314069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899314068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d337b81ebb98c443a8f9cd4f4ae48aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  groups:
+  - groupName: Weapon
+    sounds:
+    - audioName: LaserBullet
+      soundClip: {fileID: 0}
+      audioObjectPrefab: {fileID: 0}
+      volume: 0
+  masterVolumeMultiplier: 0
+--- !u!4 &899314070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899314068}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 33.5294, y: -4.70956, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &969662692 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8248021166685875350, guid: 9f66344bff8ad08479d79ae1e31b8fad, type: 3}
@@ -3332,3 +3384,4 @@ SceneRoots:
   - {fileID: 1351491278}
   - {fileID: 83336753}
   - {fileID: 237713028}
+  - {fileID: 899314070}
