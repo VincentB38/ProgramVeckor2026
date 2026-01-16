@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         SetDirectionTowardsMouse();
 
         // Ensure collider is a trigger
-        CircleCollider2D col = GetComponent<CircleCollider2D>();
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
         col.isTrigger = true;
     }
 
