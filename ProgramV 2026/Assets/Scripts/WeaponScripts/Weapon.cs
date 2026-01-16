@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     public Transform MuzzlePos;
     [SerializeField] private Transform bulletsParent;
     private Vector2 startMuzzlePos;
+    public SoundManager SoundThing;
     
 
 
@@ -32,6 +33,8 @@ public class Weapon : MonoBehaviour
     {
         ReloadText = UIProvider.Instance.reloadText;
         startMuzzlePos = MuzzlePos.localPosition;
+
+        SoundThing = FindAnyObjectByType<SoundManager>();
 
         if (currentAmmo <= 0)
         {
@@ -84,6 +87,7 @@ public class Weapon : MonoBehaviour
 
     private void Fire()
     {
+
         Vector2 mouseWorld =
             Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
@@ -96,6 +100,7 @@ public class Weapon : MonoBehaviour
             Quaternion.identity,
             bulletsParent
         );
+        SoundThing.PlaySound(0, bullet.transform);
 
         // Pass damage to bullet
         Bullet bulletScript = bullet.GetComponent<Bullet>();
