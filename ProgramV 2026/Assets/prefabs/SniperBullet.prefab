@@ -64,9 +64,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SniperBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 9062886323949061612, guid: ba338ad6612ba5547b00bff41b2a31cd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16930771
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062886323949061612, guid: ba338ad6612ba5547b00bff41b2a31cd, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.41534603
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8074296529745351860, guid: ba338ad6612ba5547b00bff41b2a31cd, type: 3}
     - {fileID: 2052672677550102985, guid: ba338ad6612ba5547b00bff41b2a31cd, type: 3}
+    - {fileID: 9062886323949061612, guid: ba338ad6612ba5547b00bff41b2a31cd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -116,7 +125,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000020861626, y: -0.007574752}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -126,7 +135,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.6}
+  m_Size: {x: 0.9999996, y: 0.26368326}
   m_EdgeRadius: 0
 --- !u!114 &-4096568173006199616
 MonoBehaviour:

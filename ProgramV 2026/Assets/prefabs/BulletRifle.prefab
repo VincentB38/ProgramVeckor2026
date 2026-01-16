@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4801658541416423396}
   - component: {fileID: 7044852334605943649}
   - component: {fileID: 6263313986461450340}
-  - component: {fileID: 2052672677550102985}
   - component: {fileID: -8074296529745351860}
+  - component: {fileID: 9062886323949061612}
   m_Layer: 7
   m_Name: BulletRifle
   m_TagString: Untagged
@@ -120,8 +120,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &2052672677550102985
-CircleCollider2D:
+--- !u!114 &-8074296529745351860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321501342719085292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc17fa5c0da98d0459fde8651f4949c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  speed: 25
+  lifeTime: 0.7
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!61 &9062886323949061612
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,26 +167,19 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.49999997
---- !u!114 &-8074296529745351860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8321501342719085292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc17fa5c0da98d0459fde8651f4949c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  speed: 25
-  lifeTime: 0.7
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  m_Offset: {x: 0, y: -0.003831923}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 0.6}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 0.23980239}
+  m_EdgeRadius: 0
