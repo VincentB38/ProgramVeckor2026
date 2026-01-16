@@ -159,8 +159,8 @@ MonoBehaviour:
   moveSpeed: 1
   damageAmount: 2
   damageRateSeconds: 3.5
-  bulletSpeed: 9
-  attackRange: 20
+  bulletSpeed: 10
+  attackRange: 21
   jumpHeight: 40
   yOffset: 1.2
   pointLoss: 35
