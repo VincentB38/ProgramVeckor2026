@@ -828,14 +828,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d337b81ebb98c443a8f9cd4f4ae48aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  groups:
-  - groupName: Weapon
-    sounds:
-    - audioName: LaserBullet
-      soundClip: {fileID: 0}
-      audioObjectPrefab: {fileID: 0}
-      volume: 0
-  masterVolumeMultiplier: 0
+  sounds:
+  - audioName: LaserBullet
+    soundClip: {fileID: 8300000, guid: 05717247a0b413a44aeece76276aac23, type: 3}
+    volume: 1
+  masterVolumeMultiplier: 1
+  audioObjectPrefab: {fileID: 6741740349727776123, guid: e80216498a8069d43bbc01502550e5ab, type: 3}
 --- !u!4 &899314070
 Transform:
   m_ObjectHideFlags: 0

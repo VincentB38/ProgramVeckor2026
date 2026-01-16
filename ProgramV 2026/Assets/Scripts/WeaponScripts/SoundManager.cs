@@ -7,7 +7,7 @@ public class SoundInformation
 {
     public string audioName;
     public AudioClip soundClip;
-    public float volume;
+    public float volume = 1f;
 }
 
 public class SoundManager : MonoBehaviour
@@ -15,19 +15,6 @@ public class SoundManager : MonoBehaviour
     public List<SoundInformation> sounds = new List<SoundInformation>();
     public float masterVolumeMultiplier;
     public GameObject audioObjectPrefab;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void PlaySound(int audioIndex, Transform spawnTransform)
     {
