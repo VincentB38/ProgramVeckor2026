@@ -63,7 +63,7 @@ public class EnemySpawnManager : MonoBehaviour
             soundManager = GetComponent<SoundManager>();
         }
 
-        if (waves.Count > 0)
+        if (waves.Count > 0) // If there's any waves
         {
             StartCoroutine(RunWave(waves[0]));
         }
@@ -78,8 +78,8 @@ public class EnemySpawnManager : MonoBehaviour
         if (waveText == null)
             yield break;
 
-        // Plays wave sound to alert player
-        soundManager.PlaySound(1, Player.transform);
+        // Sound for new wave
+        soundManager?.PlaySound(1, Player.transform);
 
         waveText.gameObject.SetActive(true);
         waveText.text = text;
@@ -99,7 +99,7 @@ public class EnemySpawnManager : MonoBehaviour
         }
         waveText.transform.localScale = fullScale;
 
-        // Hold full size
+        // Stay big for a bit
         yield return new WaitForSeconds(waveDisplayDuration);
 
         // Shrink
