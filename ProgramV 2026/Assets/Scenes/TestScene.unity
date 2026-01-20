@@ -520,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[1].spawnInterval
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[2].spawnInterval
@@ -608,11 +608,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[0].maxAliveEnemies
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[1].maxAliveEnemies
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8054784362770423297, guid: 1a549778b56db3c46a6e6e07c97cf2b4, type: 3}
       propertyPath: waves.Array.data[0].groups.Array.data[2].maxAliveEnemies
@@ -4916,7 +4916,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.11404275, y: -0.0033541024}
+  m_Offset: {x: -0.022851638, y: -0.07666713}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4926,7 +4926,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.61091256, y: 0.7652053}
+  m_Size: {x: 0.42853028, y: 0.6972567}
   m_EdgeRadius: 0
 --- !u!50 &477957203
 Rigidbody2D:
