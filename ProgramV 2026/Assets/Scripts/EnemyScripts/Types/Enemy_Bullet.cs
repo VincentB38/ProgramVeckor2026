@@ -73,5 +73,7 @@ public class Enemy_Bullet : MonoBehaviour
             other.GetComponent<PlayerHandler>().UpdateScore(-pointLoss);
             Destroy(gameObject);
         }
+
+
     }
 }
